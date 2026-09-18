@@ -1,0 +1,345 @@
+{
+  "protocol_sha256": "500067b8a11c7a880685c31aeabe38b12da7a3c7273af56b4505c96797c48c50",
+  "selections": [
+    {
+      "outer_year": 2022,
+      "selection_date": "2022-01-01",
+      "validation_signal_start": "2020-01-01",
+      "validation_label_end_max": "2021-12-31",
+      "selected": "historical_prior",
+      "all_candidates": [
+        {
+          "candidate": "historical_prior",
+          "mean_annual_brier": 0.24642702925689414,
+          "priority": 0,
+          "validation_rows": 724
+        },
+        {
+          "candidate": "logistic_shrunk",
+          "mean_annual_brier": 0.24739166922467037,
+          "priority": 2,
+          "validation_rows": 724
+        },
+        {
+          "candidate": "equal_blend",
+          "mean_annual_brier": 0.24888028195619677,
+          "priority": 3,
+          "validation_rows": 724
+        },
+        {
+          "candidate": "regime_shrunk",
+          "mean_annual_brier": 0.25080243206297753,
+          "priority": 1,
+          "validation_rows": 724
+        }
+      ],
+      "horizon": 7
+    },
+    {
+      "outer_year": 2023,
+      "selection_date": "2023-01-01",
+      "validation_signal_start": "2020-01-01",
+      "validation_label_end_max": "2022-12-31",
+      "selected": "historical_prior",
+      "all_candidates": [
+        {
+          "candidate": "historical_prior",
+          "mean_annual_brier": 0.25035891129688753,
+          "priority": 0,
+          "validation_rows": 1089
+        },
+        {
+          "candidate": "logistic_shrunk",
+          "mean_annual_brier": 0.25080133416199785,
+          "priority": 2,
+          "validation_rows": 1089
+        },
+        {
+          "candidate": "equal_blend",
+          "mean_annual_brier": 0.2512834309130638,
+          "priority": 3,
+          "validation_rows": 1089
+        },
+        {
+          "candidate": "regime_shrunk",
+          "mean_annual_brier": 0.25208868860820904,
+          "priority": 1,
+          "validation_rows": 1089
+        }
+      ],
+      "horizon": 7
+    },
+    {
+      "outer_year": 2024,
+      "selection_date": "2024-01-01",
+      "validation_signal_start": "2020-01-01",
+      "validation_label_end_max": "2023-12-31",
+      "selected": "historical_prior",
+      "all_candidates": [
+        {
+          "candidate": "historical_prior",
+          "mean_annual_brier": 0.24974113327134145,
+          "priority": 0,
+          "validation_rows": 1454
+        },
+        {
+          "candidate": "logistic_shrunk",
+          "mean_annual_brier": 0.25025295700655514,
+          "priority": 2,
+          "validation_rows": 1454
+        },
+        {
+          "candidate": "equal_blend",
+          "mean_annual_brier": 0.2509130501651603,
+          "priority": 3,
+          "validation_rows": 1454
+        },
+        {
+          "candidate": "regime_shrunk",
+          "mean_annual_brier": 0.2519229412571056,
+          "priority": 1,
+          "validation_rows": 1454
+        }
+      ],
+      "horizon": 7
+    },
+    {
+      "outer_year": 2025,
+      "selection_date": "2025-01-01",
+      "validation_signal_start": "2020-01-01",
+      "validation_label_end_max": "2024-12-31",
+      "selected": "historical_prior",
+      "all_candidates": [
+        {
+          "candidate": "historical_prior",
+          "mean_annual_brier": 0.2492309565646877,
+          "priority": 0,
+          "validation_rows": 1820
+        },
+        {
+          "candidate": "logistic_shrunk",
+          "mean_annual_brier": 0.2496750098353481,
+          "priority": 2,
+          "validation_rows": 1820
+        },
+        {
+          "candidate": "equal_blend",
+          "mean_annual_brier": 0.2503098120402139,
+          "priority": 3,
+          "validation_rows": 1820
+        },
+        {
+          "candidate": "regime_shrunk",
+          "mean_annual_brier": 0.2512662126086632,
+          "priority": 1,
+          "validation_rows": 1820
+        }
+      ],
+      "horizon": 7
+    },
+    {
+      "outer_year": 2026,
+      "selection_date": "2026-01-01",
+      "validation_signal_start": "2020-01-01",
+      "validation_label_end_max": "2025-12-31",
+      "selected": "historical_prior",
+      "all_candidates": [
+        {
+          "candidate": "historical_prior",
+          "mean_annual_brier": 0.24945686298140837,
+          "priority": 0,
+          "validation_rows": 2185
+        },
+        {
+          "candidate": "logistic_shrunk",
+          "mean_annual_brier": 0.24973221894451872,
+          "priority": 2,
+          "validation_rows": 2185
+        },
+        {
+          "candidate": "equal_blend",
+          "mean_annual_brier": 0.25019385718835974,
+          "priority": 3,
+          "validation_rows": 2185
+        },
+        {
+          "candidate": "regime_shrunk",
+          "mean_annual_brier": 0.25096420063372665,
+          "priority": 1,
+          "validation_rows": 2185
+        }
+      ],
+      "horizon": 7
+    },
+    {
+      "outer_year": 2022,
+      "selection_date": "2022-01-01",
+      "validation_signal_start": "2020-01-01",
+      "validation_label_end_max": "2021-12-31",
+      "selected": "historical_prior",
+      "all_candidates": [
+        {
+          "candidate": "historical_prior",
+          "mean_annual_brier": 0.24963693862156766,
+          "priority": 0,
+          "validation_rows": 701
+        },
+        {
+          "candidate": "logistic_shrunk",
+          "mean_annual_brier": 0.2575296038175872,
+          "priority": 2,
+          "validation_rows": 701
+        },
+        {
+          "candidate": "equal_blend",
+          "mean_annual_brier": 0.2604354204890404,
+          "priority": 3,
+          "validation_rows": 701
+        },
+        {
+          "candidate": "regime_shrunk",
+          "mean_annual_brier": 0.26432473718089033,
+          "priority": 1,
+          "validation_rows": 701
+        }
+      ],
+      "horizon": 30
+    },
+    {
+      "outer_year": 2023,
+      "selection_date": "2023-01-01",
+      "validation_signal_start": "2020-01-01",
+      "validation_label_end_max": "2022-12-31",
+      "selected": "historical_prior",
+      "all_candidates": [
+        {
+          "candidate": "historical_prior",
+          "mean_annual_brier": 0.25536154674906647,
+          "priority": 0,
+          "validation_rows": 1066
+        },
+        {
+          "candidate": "logistic_shrunk",
+          "mean_annual_brier": 0.25899756753456793,
+          "priority": 2,
+          "validation_rows": 1066
+        },
+        {
+          "candidate": "equal_blend",
+          "mean_annual_brier": 0.26021305860926897,
+          "priority": 3,
+          "validation_rows": 1066
+        },
+        {
+          "candidate": "regime_shrunk",
+          "mean_annual_brier": 0.26219693340859274,
+          "priority": 1,
+          "validation_rows": 1066
+        }
+      ],
+      "horizon": 30
+    },
+    {
+      "outer_year": 2024,
+      "selection_date": "2024-01-01",
+      "validation_signal_start": "2020-01-01",
+      "validation_label_end_max": "2023-12-31",
+      "selected": "historical_prior",
+      "all_candidates": [
+        {
+          "candidate": "historical_prior",
+          "mean_annual_brier": 0.2525585595478563,
+          "priority": 0,
+          "validation_rows": 1431
+        },
+        {
+          "candidate": "logistic_shrunk",
+          "mean_annual_brier": 0.2568619972056557,
+          "priority": 2,
+          "validation_rows": 1431
+        },
+        {
+          "candidate": "equal_blend",
+          "mean_annual_brier": 0.2584978912064693,
+          "priority": 3,
+          "validation_rows": 1431
+        },
+        {
+          "candidate": "regime_shrunk",
+          "mean_annual_brier": 0.26099218716261,
+          "priority": 1,
+          "validation_rows": 1431
+        }
+      ],
+      "horizon": 30
+    },
+    {
+      "outer_year": 2025,
+      "selection_date": "2025-01-01",
+      "validation_signal_start": "2020-01-01",
+      "validation_label_end_max": "2024-12-31",
+      "selected": "historical_prior",
+      "all_candidates": [
+        {
+          "candidate": "historical_prior",
+          "mean_annual_brier": 0.250076495919935,
+          "priority": 0,
+          "validation_rows": 1797
+        },
+        {
+          "candidate": "logistic_shrunk",
+          "mean_annual_brier": 0.2541168119859996,
+          "priority": 2,
+          "validation_rows": 1797
+        },
+        {
+          "candidate": "equal_blend",
+          "mean_annual_brier": 0.2549316940035221,
+          "priority": 3,
+          "validation_rows": 1797
+        },
+        {
+          "candidate": "regime_shrunk",
+          "mean_annual_brier": 0.25651398190070934,
+          "priority": 1,
+          "validation_rows": 1797
+        }
+      ],
+      "horizon": 30
+    },
+    {
+      "outer_year": 2026,
+      "selection_date": "2026-01-01",
+      "validation_signal_start": "2020-01-01",
+      "validation_label_end_max": "2025-12-31",
+      "selected": "historical_prior",
+      "all_candidates": [
+        {
+          "candidate": "historical_prior",
+          "mean_annual_brier": 0.2517757099348579,
+          "priority": 0,
+          "validation_rows": 2162
+        },
+        {
+          "candidate": "logistic_shrunk",
+          "mean_annual_brier": 0.2547906333496078,
+          "priority": 2,
+          "validation_rows": 2162
+        },
+        {
+          "candidate": "equal_blend",
+          "mean_annual_brier": 0.2549976028136069,
+          "priority": 3,
+          "validation_rows": 2162
+        },
+        {
+          "candidate": "regime_shrunk",
+          "mean_annual_brier": 0.25594657444493696,
+          "priority": 1,
+          "validation_rows": 2162
+        }
+      ],
+      "horizon": 30
+    }
+  ]
+}

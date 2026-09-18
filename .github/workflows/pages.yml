@@ -28,13 +28,15 @@ jobs:
         run: |
           node --check btc-web/app.js
           node --check btc-web/model.js
-          node --test btc-web/model.test.cjs
+          node --check btc-web/market.js
+          node --test btc-web/*.test.cjs
       - name: Configure Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b
       - name: Package public web assets only
         run: |
           mkdir -p _site
-          cp btc-web/index.html btc-web/styles.css btc-web/app.js btc-web/model.js btc-web/data.js _site/
+          cp btc-web/index.html btc-web/styles.css btc-web/app.js btc-web/model.js btc-web/market.js btc-web/data.js _site/
+          sed -i "s/RELEASE_VERSION/${GITHUB_SHA}/g" _site/index.html
           touch _site/.nojekyll
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa

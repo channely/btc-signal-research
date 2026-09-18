@@ -103,7 +103,37 @@
       q10: calibrated.return_q10, median: calibrated.return_median, q90: calibrated.return_q90 };
   }
 
-  const api = { addDays, parseCSV, indicators, forecast };
+  function researchForecast(candles, index, horizon, artifact, options = {}) {
+    if (![7, 30].includes(horizon)) throw new Error('仅支持 7 天或 30 天预测期限。');
+    const date = candles[index]?.[0];
+    const snapshot = artifact?.horizons?.[String(horizon)];
+    if (!date || !snapshot) return { available: false, reason: '缺少对应的研究模型。' };
+    const historical = options.allowHistorical && snapshot.oos.find(row => row[0] === date);
+    let probability, selected, mode;
+    if (historical) {
+      probability = historical[1]; selected = historical[7]; mode = 'historical';
+    } else {
+      if (date < snapshot.refitDate || date >= snapshot.validUntilExclusive) {
+        return { available: false, reason: '此日期没有适用的冻结模型；需要先完成新的时序验证与模型更新。' };
+      }
+      // The precommitted selection procedure chose the historical prior for
+      // every evaluated year. Do not silently promote a runner-up after seeing
+      // its outer-window results, or apply current parameters to earlier dates.
+      if (snapshot.selected !== 'historical_prior') return { available: false, reason: '该候选尚未接入经过验证的浏览器推理。' };
+      probability = snapshot.priorProbability; selected = snapshot.selected; mode = 'frozen';
+    }
+    if (!Number.isFinite(probability) || probability < 0 || probability > 1) return { available: false, reason: '模型概率无效。' };
+    const endDate = addDays(date, horizon);
+    const exit = candles[index + horizon];
+    return { available: true, probability, selected, mode, date, endDate, horizon,
+      close: candles[index][4],
+      realized: exit?.[0] === endDate ? exit[4] / candles[index][4] - 1 : null,
+      signal: 'observe', evidencePassed: artifact.replacementEvidencePassed === true,
+      validUntilExclusive: snapshot.validUntilExclusive,
+      trainLabelEndMax: mode === 'frozen' ? snapshot.trainLabelEndMax : null };
+  }
+
+  const api = { addDays, parseCSV, indicators, forecast, researchForecast };
   root.BTCModel = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 })(globalThis);

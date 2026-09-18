@@ -15,8 +15,13 @@
   let range = 365;
   let performanceMode = 'equity';
   let importedName = null;
+  let marketData = null;
+  let refreshController = null;
+  let refreshGeneration = 0;
+  let importGeneration = 0;
   let view = 'overview';
   let currentForecast;
+  let currentResearch;
   let toastTimer;
   let lastImportTrigger;
 
@@ -31,6 +36,7 @@
     return candles.findIndex((row, index) => signals[index] && row[0] >= '2024-01-01');
   }
   function configureDate() {
+    $('date-error').hidden = true;
     $('signal-date').min = candles[minimumIndex()][0];
     $('signal-date').max = candles.at(-1)[0];
     $('signal-date').value = candles[selectedIndex][0];
@@ -45,6 +51,80 @@
     renderOverview();
   }
 
+  function cancelRefresh() {
+    refreshGeneration++;
+    if (refreshController) text('market-status', '更新已取消 · 当前数据截至 ' + candles.at(-1)[0] + ' UTC');
+    refreshController?.abort();
+    refreshController = null;
+    $('refresh-market').disabled = false;
+    text('refresh-market', '刷新行情');
+  }
+
+  function renderMarket() {
+    const quote = marketData?.quote;
+    text('live-price', quote ? numeric(quote.price) + ' USDT' : '尚无最新报价');
+    text('live-price-time', quote
+      ? '获取于 ' + new Date(quote.receivedAt).toLocaleString('zh-CN', { hour12: false }) + ' · 点击刷新更新'
+      : '盘中报价仅供参考；预测只使用完整 UTC 日线');
+  }
+
+  async function refreshMarket() {
+    cancelRefresh();
+    const generation = refreshGeneration;
+    refreshController = new AbortController();
+    $('refresh-market').disabled = true;
+    text('refresh-market', '更新中…');
+    $('market-error').hidden = true;
+    text('market-status', '正在获取 Binance 完整日线与最新报价…');
+    try {
+      const result = await window.BTCMarket.refresh({ signal: refreshController.signal });
+      if (generation !== refreshGeneration) return;
+      const nextSignals = model.indicators(result.candles);
+      marketData = result;
+      candles = result.candles;
+      signals = nextSignals;
+      importedName = null;
+      selectedIndex = candles.length - 1;
+      configureDate(); renderMarket(); renderOverview(); renderData();
+      text('market-status', '日线更新至 ' + result.lastClosedDate + ' UTC · ' + candles.length + ' 根');
+      if (result.quoteError) {
+        text('market-error', result.quoteError + '；完整日线已更新，报价暂不可用。');
+        $('market-error').hidden = false;
+      }
+    } catch (error) {
+      if (generation !== refreshGeneration) return;
+      text('market-error', error.message || '行情源暂不可用；当前数据保持不变，可稍后重试或导入 CSV。');
+      $('market-error').hidden = false;
+      text('market-status', '更新失败 · 当前数据截至 ' + candles.at(-1)[0] + ' UTC');
+    } finally {
+      if (generation === refreshGeneration) {
+        refreshController = null;
+        $('refresh-market').disabled = false;
+        text('refresh-market', '刷新行情');
+      }
+    }
+  }
+
+  function todayUTC() {
+    const now = marketData ? marketData.referenceTime + (Date.now() - marketData.fetchedAt) : Date.now();
+    return new Date(now).toISOString().slice(0, 10);
+  }
+
+  function renderResearch() {
+    currentResearch = model.researchForecast(candles, selectedIndex, horizon, data.v3, { allowHistorical: !importedName });
+    const f = currentResearch;
+    text('research-probability', f.available ? percent(f.probability) : '暂不可用');
+    text('research-status', f.available ? '观望 · 优势未证实' : '没有适用模型');
+    text('research-selected', f.available ? '历史先验 · 未证明额外优势' : '等待模型更新');
+    text('research-dates', f.available ? f.date + ' → ' + f.endDate : '—');
+    text('research-forecast', f.available
+      ? `以 ${f.date} 日线收盘 ${numeric(f.close)} USDT 为观察起点。${f.realized === null ? (f.endDate < todayUTC() ? '历史预测，当前数据缺少后续行情。' : '结果尚未成熟。') : '该段实际变化 ' + percent(f.realized, true) + '，仅供后验核对。'}`
+      : f.reason);
+    text('research-model-note', f.available
+      ? (f.mode === 'historical' ? '采用该日期当时的滚动预测记录；没有用最新参数回填历史。' : '冻结训练标签截至 ' + f.trainLabelEndMax + '，仅适用于 ' + f.validUntilExclusive + ' 之前的信号日期；需重新验证才能更新。')
+      : 'V3 历史记录只适用于内置或同源 BTCUSDT 行情；自定义 CSV 不冒用原历史预测。');
+  }
+
   function renderOverview() {
     const candle = candles[selectedIndex];
     currentForecast = model.forecast(candles, signals, selectedIndex, horizon, data.forecast);
@@ -54,9 +134,9 @@
     text('day-change', (daily >= 0 ? '↗ ' : '↘ ') + percent(daily, true));
     $('day-change').classList.toggle('negative', daily < 0);
     text('price-date', candle[0] + ' · 已完成 UTC 日线 · 较前日');
-    text('source-badge', importedName ? '已导入 · 本地计算' : '内置历史快照');
-    const daysOld = Math.floor((Date.parse(new Date().toISOString().slice(0, 10)) - Date.parse(candles.at(-1)[0])) / 86400000);
-    text('snapshot-label', '数据截至 ' + candles.at(-1)[0] + (daysOld > 2 ? ` · 距今 ${daysOld} 天，非实时` : ' · 非实时行情'));
+    text('source-badge', importedName ? '已导入 · 本地计算' : marketData ? 'Binance · 在线更新' : '内置历史快照');
+    const daysOld = Math.floor((Date.parse(todayUTC()) - Date.parse(candles.at(-1)[0])) / 86400000);
+    text('snapshot-label', '日线截至 ' + candles.at(-1)[0] + (daysOld > 1 ? ` · 距今 ${daysOld} 天，请更新` : ' · 最新完整日线'));
     text('up-probability', numeric(f.probability * 100));
     text('direction-tag', f.probability >= 0.5 ? '轻微偏多' : '轻微偏空');
     $('probability-fill').style.width = `${f.probability * 100}%`;
@@ -70,7 +150,7 @@
     text('forecast-dates', f.entryDate + ' → ' + f.endDate);
     const predictionMatches = f.realized !== null && (f.realized > 0) === (f.direction === 'up');
     text('realized-outcome', f.realized === null
-      ? `尚无完整后验结果 · 需要 ${f.endDate} 开盘数据`
+      ? `${f.endDate < todayUTC() ? '历史预测，缺少后续行情' : '尚无完整后验结果'} · 需要 ${f.endDate} 开盘数据`
       : `后验观察：${percent(f.realized, true)} · 本次方向${predictionMatches ? '正确' : '错误'}（不用于计算信号）`);
     text('sma-value', numeric(f.sma));
     text('sma-distance', percent(f.close / f.sma - 1, true));
@@ -86,6 +166,7 @@
     text('cash-value', '现金 ' + percent(1 - f.weight));
     text('state-summary', stateNames[f.score] + ' · ' + f.score + '/2 项成立');
     renderPriceChart();
+    renderResearch();
   }
 
   function chart(container, dates, series, options) {
@@ -196,6 +277,24 @@
       const value = document.createElement('strong'); value.textContent = percent(accuracy);
       row.append(label, bar, value); $('experiment-bars').append(row);
     }
+    const candidateNames = { nested_primary: '按过去验证选型', historical_prior: '历史先验', regime_shrunk: '收缩三态', logistic_shrunk: '正则逻辑回归', equal_blend: '等权混合', always_up: '始终看涨', coin_flip: '恒定 50% 概率' };
+    $('v3-table').replaceChildren();
+    for (const day of [7, 30]) {
+      for (const [id, stats] of Object.entries(data.v3.horizons[String(day)].metrics)) {
+        const row = document.createElement('tr');
+        if (id === 'nested_primary') row.className = 'highlight-row';
+        for (const value of [day + ' 天 / ' + candidateNames[id], percent(stats.accuracy), numeric(stats.brier, 4), numeric(stats.total, 0) + ' / ' + percent(stats.coverage)]) {
+          const cell = document.createElement('td'); cell.textContent = value; row.append(cell);
+        }
+        $('v3-table').append(row);
+      }
+    }
+    text('v3-uncertainty', [7, 30].map(day => {
+      const ranges = data.v3.horizons[String(day)].uncertainty;
+      const lower = Math.min(...ranges.map(item => item.accuracy_ci95[0]));
+      const upper = Math.max(...ranges.map(item => item.accuracy_ci95[1]));
+      return `${day} 天主模型：30／60／90 日区块的 95% 准确率区间外包络 ${percent(lower)}–${percent(upper)}`;
+    }).join('；') + '。不是未来成功率区间。标签重叠，样本数不等于独立交易数；全部候选使用相同成熟日期与全覆盖。');
     renderPerformanceChart();
   }
 
@@ -218,14 +317,16 @@
   }
 
   function renderData() {
-    text('data-type', importedName ? '用户 CSV' : '内置历史快照');
+    text('data-type', importedName ? '用户 CSV' : marketData ? '公开行情 · 在线更新' : '内置历史快照');
     text('data-name', importedName || 'BTCUSDT · Binance');
     text('data-range', candles[0][0] + ' → ' + candles.at(-1)[0]);
     text('data-count', numeric(candles.length, 0) + ' 根');
-    $('reset-data').disabled = !importedName;
+    $('reset-data').disabled = !importedName && !marketData;
   }
 
   function navigate() {
+    if (location.hash === '#main') return;
+    const previousView = view;
     const nextView = location.hash.slice(1);
     view = ['overview', 'backtest', 'method'].includes(nextView) ? nextView : 'overview';
     document.querySelectorAll('.view').forEach(section => { section.hidden = section.id !== 'view-' + view; });
@@ -238,6 +339,7 @@
     if (view === 'overview') renderOverview();
     if (view === 'backtest') renderBacktest();
     if (view === 'method') renderData();
+    if (previousView !== view) window.scrollTo({ top: 0, behavior: 'instant' });
   }
 
   function download(filename, content, type) {
@@ -257,11 +359,13 @@
     const stats = data.forecast[String(horizon)];
     const result = {
       model: 'BTC-TVM-1', exportedAt: new Date().toISOString(),
-      dataSource: importedName || 'Bundled Binance BTCUSDT snapshot',
+      dataSource: importedName || marketData?.source || 'Bundled Binance BTCUSDT snapshot',
+      quote: marketData?.quote || null,
       dataEnd: candles.at(-1)[0], calibrationEndExclusive: '2024-01-01',
       signal: { date: f.date, close: f.close, sma200: f.sma, momentum63: f.momentum,
         annualVolatility30: f.volatility, score: f.score, unexecutedTargetWeight: f.weight },
       forecast: { horizonDays: horizon, upProbability: f.probability, entryDate: f.entryDate, endDate: f.endDate },
+      closeToCloseResearch: currentResearch,
       retrospectiveOutcome: { forwardReturn: f.realized, usedForSignal: false },
       originalHistoricalEvaluation: { accuracy: stats.direction_accuracy, total: stats.n_evaluation_overlapping,
         correct: Math.round(stats.direction_accuracy * stats.n_evaluation_overlapping), coverage: 1,
@@ -281,27 +385,38 @@
   }
   async function importFile(file) {
     if (!file) return;
+    cancelRefresh();
+    const generation = refreshGeneration;
+    const importToken = ++importGeneration;
     $('import-error').hidden = true;
     $('import-progress').hidden = false;
     $('csv-file').disabled = true;
     try {
       if (file.size > 5 * 1024 * 1024) throw new Error('文件超过 5 MB，请缩小数据范围后重试。');
       if (!/\.csv$/i.test(file.name)) throw new Error('请选择 .csv 格式的行情文件。');
-      const nextCandles = model.parseCSV(await file.text());
+      const contents = await file.text();
+      if (generation !== refreshGeneration) return;
+      const nextCandles = model.parseCSV(contents);
       const nextSignals = model.indicators(nextCandles);
       candles = nextCandles; signals = nextSignals;
       importedName = file.name;
+      marketData = null;
       selectedIndex = candles.length - 1;
-      configureDate(); renderOverview(); renderData();
+      configureDate(); renderMarket(); renderOverview(); renderData();
+      $('market-error').hidden = true;
+      text('market-status', '正在使用本地 CSV · ' + candles.at(-1)[0] + ' UTC');
       $('import-dialog').close();
       toast(`已载入 ${numeric(candles.length, 0)} 根日线；原始回测指标保持不变。`);
     } catch (error) {
+      if (generation !== refreshGeneration) return;
       text('import-error', error.message);
       $('import-error').hidden = false;
     } finally {
-      $('import-progress').hidden = true;
-      $('csv-file').disabled = false;
-      $('csv-file').value = '';
+      if (importToken === importGeneration) {
+        $('import-progress').hidden = true;
+        $('csv-file').disabled = false;
+        $('csv-file').value = '';
+      }
     }
   }
 
@@ -346,10 +461,15 @@
   ['open-import', 'method-import'].forEach(id => $(id).addEventListener('click', openImport));
   ['download-sample', 'dialog-sample'].forEach(id => $(id).addEventListener('click', downloadSample));
   $('export-signal').addEventListener('click', exportSignal);
+  $('refresh-market').addEventListener('click', refreshMarket);
   $('csv-file').addEventListener('change', event => importFile(event.target.files[0]));
   $('reset-data').addEventListener('click', () => {
+    cancelRefresh();
+    marketData = null;
     candles = data.candles; signals = model.indicators(candles); importedName = null;
-    selectedIndex = candles.length - 1; configureDate(); renderOverview(); renderData();
+    selectedIndex = candles.length - 1; configureDate(); renderMarket(); renderOverview(); renderData();
+    $('market-error').hidden = true;
+    text('market-status', '内置快照 · ' + candles.at(-1)[0] + ' UTC · 可点击刷新行情');
     toast('已恢复内置 BTCUSDT 历史快照。');
   });
   $('import-dialog').addEventListener('close', () => { if (lastImportTrigger) lastImportTrigger.focus(); });
@@ -366,5 +486,7 @@
   });
   observer.observe($('price-chart')); observer.observe($('performance-chart'));
   window.addEventListener('hashchange', navigate);
-  configureDate(); renderOverview(); renderData(); navigate();
+  document.addEventListener('visibilitychange', () => { if (!document.hidden && view === 'overview') renderOverview(); });
+  configureDate(); renderMarket(); renderOverview(); renderData(); navigate();
+  refreshMarket();
 })();
