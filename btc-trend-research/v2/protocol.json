@@ -1,0 +1,49 @@
+{
+  "name": "BTC-Direction-V2",
+  "purpose": "Bounded exploratory optimization; no claim of guaranteed 90 percent accuracy",
+  "primary_target": "I(open[t+32] / open[t+2] - 1 > 0)",
+  "forecast_horizon_days": 30,
+  "execution_lag_days": 2,
+  "classification_threshold": 0.5,
+  "required_accuracy_strictly_greater_than": 0.9,
+  "required_coverage": 1.0,
+  "training_start": "2018-04-01",
+  "development_years": [2020, 2021, 2022, 2023],
+  "development_label_end_exclusive": "2024-01-01",
+  "reused_history_start": "2024-01-01",
+  "refit_frequency": "annual; first day of each UTC calendar year",
+  "training_windows_days": [null, 730],
+  "feature_sets": ["basic", "expanded", "interactions"],
+  "logistic_l2_mean_loss_penalties": [0.001, 0.01, 0.1],
+  "knn_neighbors": [25, 75, 150],
+  "candidate_count": 40,
+  "rounds": [
+    {"name": "state_probability_and_baselines", "count": 4},
+    {"name": "regularized_logistic", "count": 18},
+    {"name": "nearest_neighbors", "count": 18}
+  ],
+  "selection_order": [
+    "development mean annual direction accuracy descending",
+    "development worst annual direction accuracy descending",
+    "development pooled Brier ascending",
+    "candidate id ascending"
+  ],
+  "secondary_reused_comparisons": "preselect one winner per family plus original V1, prior, and always-up; never replace development winner using reused-history results",
+  "bootstrap": {"repetitions": 1000, "block_days": [30, 60, 90], "seed": 20260917},
+  "secondary_confidence_threshold": 0.9,
+  "stop_rule": "Run the 40 fixed candidates once, select before reused-history evaluation, then report whether 90 percent is achieved; do not expand search using test outcomes",
+  "data_sha256": "2bbd3ded2c21d1261e59e82257f24adc9a4a8b877a63346015a946e8b5e45f8e",
+  "limitations": [
+    "The entire history was previously inspected in V1; this is not a pristine test set.",
+    "Development winner statistics are selection-biased; no claim of global optimality.",
+    "Each prediction uses only completed daily OHLCV features.",
+    "Each refit excludes labels whose end timestamp reaches the refit date.",
+    "Scaling is fitted separately on each training subset; no global scaling.",
+    "No abstention in primary accuracy; all common eligible dates are included.",
+    "Exact zero forward returns belong to the not-up class.",
+    "Overlapping 30-day labels are dependent; use block bootstrap and disclose fixed-offset nonoverlapping checks.",
+    "A forecast probability of 90 percent is not observed accuracy of 90 percent.",
+    "Directional prediction scores do not imply after-cost profitable trading; no V2 PnL claim.",
+    "No new data, dependencies, plugins, paid services, or trading execution."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "selected_candidate": {
+    "id": "knn_interactions_expanding_k_150",
+    "family": "knn",
+    "window": null,
+    "features": "interactions",
+    "neighbors": 150
+  },
+  "family_winners": {
+    "baseline": "always_up",
+    "regime": "regime_expanding",
+    "logistic": "logistic_basic_expanding_l2_0.1",
+    "knn": "knn_interactions_expanding_k_150"
+  },
+  "protocol_sha256": "a12fb968e55bbafcd71a5ec2a43a6c7aab74dcf0b2d92b2fda8c96834462a9e9",
+  "data_sha256": "2bbd3ded2c21d1261e59e82257f24adc9a4a8b877a63346015a946e8b5e45f8e"
+}

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#eff1eb">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' file:; script-src 'self' file:; style-src 'self' file: 'unsafe-inline'; img-src 'self' data: file:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>序列 SIGNAL / BTC 趋势研究台</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%231b4035'/%3E%3Cpath d='M8 28V20M16 28V12M24 28V17M32 28V7' stroke='%23d0ec9a' stroke-width='4'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script src="data.js" defer></script>
+  <script src="model.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <aside class="sidebar">
+    <a href="#overview" class="brand" aria-label="序列 SIGNAL 首页"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>序列<span class="brand-english">SIGNAL / RESEARCH</span></span></a>
+    <div class="workspace-tag"><span class="tiny-dot"></span> PERSONAL RESEARCH SPACE</div>
+    <nav aria-label="主导航">
+      <a href="#overview" data-nav="overview" class="nav-link active"><span class="nav-icon" aria-hidden="true">◫</span>预测总览<span class="nav-index">01</span></a>
+      <a href="#backtest" data-nav="backtest" class="nav-link"><span class="nav-icon" aria-hidden="true">↗</span>回测验证<span class="nav-index">02</span></a>
+      <a href="#method" data-nav="method" class="nav-link"><span class="nav-icon" aria-hidden="true">≡</span>数据与方法<span class="nav-index">03</span></a>
+    </nav>
+    <div class="sidebar-model"><p class="eyebrow">ACTIVE MODEL</p><div><strong>BTC–TVM</strong><span class="version">v1.0</span></div><p>趋势 × 动量 × 波动率</p><div class="model-health"><span class="tiny-dot"></span>研究候选 · 非交易系统</div></div>
+    <div class="sidebar-bottom"><span class="local-icon" aria-hidden="true">⌘</span><div><strong>只在你的设备上运行</strong><small>无需账户 · 数据不上传</small></div></div>
+  </aside>
+
+  <div class="app-shell">
+    <header class="topbar"><div class="breadcrumb">研究工作台<span>/</span><strong id="breadcrumb-page">预测总览</strong></div><div class="topbar-right"><span class="offline-label"><span class="tiny-dot"></span>本地计算</span><button id="open-import" class="button button-small"><span aria-hidden="true">＋</span> 导入行情</button></div></header>
+    <main id="main">
+      <section id="view-overview" class="view" aria-labelledby="overview-heading">
+        <div class="page-heading"><div><div class="eyebrow">BITCOIN INTELLIGENCE / DAILY</div><h1 id="overview-heading">让趋势有迹可循<span class="heading-period">.</span></h1><p class="page-subtitle">读懂信号，也看见它的不确定性。</p></div><button id="export-signal" class="button export-button"><span aria-hidden="true">↓</span> 导出当前分析</button></div>
+        <div class="research-notice"><span class="notice-icon" aria-hidden="true">i</span><p><strong>这是一份研究，不是确定性预言。</strong>30 天历史方向准确率 <b>61.38%</b>，未达到 90% 目标；历史表现不保证未来收益。</p><a href="#backtest">查看证据 <span aria-hidden="true">↗</span></a></div>
+        <div class="context-bar"><div class="asset-name"><span class="bitcoin-mark" aria-hidden="true">₿</span><strong>Bitcoin</strong><span>BTC / USDT</span><span class="market-tag">现货 · 日线</span></div><div class="date-controls"><label for="signal-date">信号日期 <span>UTC</span></label><button id="previous-day" class="icon-button" aria-label="前一天">‹</button><input type="date" id="signal-date" aria-describedby="date-error"><button id="next-day" class="icon-button" aria-label="后一天">›</button><button id="latest-day" class="text-button">最新</button></div></div>
+        <p id="date-error" class="inline-error" role="alert" hidden></p>
+        <div class="overview-grid">
+          <article class="card market-card">
+            <div class="card-top"><div><span class="eyebrow">DAILY CLOSE / USDT</span><div class="price-row"><h2 id="close-price">—</h2><span id="day-change" class="change-badge">—</span></div><p id="price-date" class="caption">已完成日线</p></div><span id="source-badge" class="source-badge">内置历史快照</span></div>
+            <div class="chart-toolbar"><div class="chart-legend"><span><i class="legend-line price-line"></i>收盘价</span><span><i class="legend-line ma-line"></i>MA 200</span></div><div class="segmented compact" aria-label="价格图时间范围"><button data-range="90" aria-pressed="false">3M</button><button data-range="365" aria-pressed="true" class="selected">1Y</button><button data-range="all" aria-pressed="false">全部</button></div></div>
+            <div id="price-chart" class="chart-container" aria-label="历史价格与200日均线"></div>
+            <div class="chart-footnote"><span id="chart-summary">—</span><span>图表不包含所选日期之后的价格</span></div>
+            <div class="market-bottom"><span><span class="tiny-dot"></span><span id="snapshot-label">行情快照</span></span><a href="#method">数据说明 ↗</a></div>
+          </article>
+          <article class="card forecast-card">
+            <div class="card-top"><div><span class="eyebrow">DIRECTIONAL OUTLOOK</span><h2>下一段行情</h2></div><span class="outline-tag">概率，不是承诺</span></div>
+            <div class="segmented horizon-picker" aria-label="预测期限"><button data-horizon="7" aria-pressed="false">未来 7 天</button><button data-horizon="30" aria-pressed="true" class="selected">未来 30 天</button></div>
+            <div class="probability-label"><span id="prediction-label">历史校准上涨概率</span><span id="direction-tag" class="direction-tag">轻微偏多</span></div>
+            <div class="probability-number"><span id="up-probability">—</span><span class="percent-sign">%</span><span class="probability-decoration" aria-hidden="true">↗</span></div>
+            <div class="probability-track" role="img" id="probability-track" aria-label="上涨概率"><span id="probability-fill"></span><i></i></div><div class="probability-axis"><span>偏跌</span><span>50% 中性</span><span>偏涨</span></div>
+            <p id="forecast-explanation" class="forecast-explanation">—</p>
+            <div class="forecast-facts"><div><span>无条件上涨概率</span><strong id="prior-probability">—</strong></div><div><span>同状态校准样本</span><strong id="calibration-count">—</strong></div><div><span>假设执行 → 观察终点</span><strong id="forecast-dates">—</strong></div></div>
+            <div id="realized-outcome" class="realized-outcome"></div>
+            <p class="small-print">概率来自 2018—2023 年冻结校准，不会随导入数据重新训练；样本有重叠。</p>
+          </article>
+        </div>
+        <div class="section-heading"><h2>信号拆解<span class="section-label">BEHIND THE SIGNAL</span></h2><span id="state-summary" class="status-chip">—</span></div>
+        <div class="signal-grid">
+          <article class="card signal-card"><div class="signal-top"><span>01 / 长期趋势</span><span id="trend-status" class="signal-status">—</span></div><h3 id="sma-value">—</h3><p>200 日简单移动平均线</p><div class="mini-rule"><span>价格相对均线</span><strong id="sma-distance">—</strong></div></article>
+          <article class="card signal-card"><div class="signal-top"><span>02 / 中期动量</span><span id="momentum-status" class="signal-status">—</span></div><h3 id="momentum-value">—</h3><p>最近 63 天的价格变化</p><div class="mini-rule"><span>动量方向</span><strong id="momentum-direction">—</strong></div></article>
+          <article class="card signal-card"><div class="signal-top"><span>03 / 波动水平</span><span class="signal-status neutral">风险维度</span></div><h3 id="volatility-value">—</h3><p>30 日实现波动率 · 年化</p><div class="mini-rule"><span>规则内波动率目标</span><strong>40.00%</strong></div></article>
+          <article class="card signal-card allocation-card"><div class="signal-top"><span>04 / 规则目标仓位</span><span class="signal-status neutral">模拟值</span></div><h3 id="weight-value">—</h3><p>非实际持仓，非个性化建议</p><div class="allocation-track"><span id="allocation-fill"></span></div><div class="allocation-labels"><span>BTC</span><span id="cash-value">现金 —</span></div></article>
+        </div>
+        <div class="overview-bottom"><span>先确认趋势，再控制风险。低仓位带来的低回撤，不等于预测更准确。</span><a href="#method">了解模型如何工作 →</a></div>
+      </section>
+
+      <section id="view-backtest" class="view" aria-labelledby="backtest-heading" hidden>
+        <div class="page-heading"><div><div class="eyebrow">EVIDENCE OVER CONFIDENCE</div><h1 id="backtest-heading">让结果接受检验<span class="heading-period">.</span></h1><p class="page-subtitle">不只展示好看的数字，也保留失败的实验。</p></div><span class="outline-tag">固定历史检验 · 不随导入改变</span></div>
+        <div class="research-notice"><span class="notice-icon" aria-hidden="true">i</span><p>以下使用原始 BTCUSDT 数据与固定 V1 规则。2024 年后的数据已经被查看，属于<strong>回溯检验</strong>，不是全新独立样本。</p></div>
+        <div class="stat-grid"><article class="card stat-card"><span>30 天方向准确率</span><h2 id="historical-accuracy">—</h2><p>588 / 958 个重叠标签 · 全覆盖</p></article><article class="card stat-card"><span>策略年化收益</span><h2 id="historical-cagr">—</h2><p>已计单边 15 bps 成本</p></article><article class="card stat-card"><span>最大日频回撤</span><h2 id="historical-drawdown">—</h2><p>每日开盘估值 · 非盘中回撤</p></article><article class="card stat-card"><span>研究验收</span><h2>5<span class="stat-denominator"> / 9</span></h2><p>整体未通过，不宣称可靠盈利</p></article></div>
+        <article class="card performance-card"><div class="card-top"><div><span class="eyebrow">RETROSPECTIVE PERFORMANCE</span><h2>风险和收益，都看见</h2><p class="caption">2024-01-01 → 2026-09-16 · 初始净值 1 · 零现金利息</p></div><div class="segmented" aria-label="回测图类型"><button data-performance="equity" class="selected" aria-pressed="true">累计净值</button><button data-performance="drawdown" aria-pressed="false">回撤</button></div></div><div class="chart-legend performance-legend"><span><i class="legend-line price-line"></i>BTC–TVM V1</span><span><i class="legend-line baseline-line"></i>买入持有</span><span><i class="legend-line vol-line"></i>波动率控制持有</span></div><div id="performance-chart" class="chart-container"></div><div class="table-scroll"><table><caption class="sr-only">同区间三种基准与V1的回测指标</caption><thead><tr><th scope="col">策略</th><th scope="col">年化收益</th><th scope="col">最大回撤</th><th scope="col">夏普比率</th><th scope="col">平均仓位</th></tr></thead><tbody id="performance-table"></tbody></table></div></article>
+        <div class="evidence-grid"><article class="card evidence-card"><span class="eyebrow">FORECAST ≠ PROFIT</span><h2>预测到底有多准？</h2><div class="table-scroll"><table><thead><tr><th>期限</th><th>模型准确率</th><th>基准准确率</th><th>Brier ↓</th></tr></thead><tbody id="accuracy-table"></tbody></table></div><p>7 天预测改善的置信区间包含零。30 天预测在较晚区间有局部证据，但更早的验证期未确认该优势。</p><p class="small-print">准确率 = 判断正确的日期 / 全部可评估日期。30 天标签相互重叠，不等于 958 笔独立交易。</p></article><article class="card evidence-card experiment-card"><span class="eyebrow">THE EXPERIMENT LOG / V2</span><h2>更复杂，未必更好</h2><p>40 组候选、三轮实验。开发期选出的模型，在后续历史中没能超越原模型。</p><div id="experiment-bars" class="experiment-bars"></div><div class="experiment-verdict">保留 V1 · 90% 准确率目标未达成</div></article></div>
+      </section>
+
+      <section id="view-method" class="view" aria-labelledby="method-heading" hidden>
+        <div class="page-heading"><div><div class="eyebrow">OPEN LOGIC / LOCAL FIRST</div><h1 id="method-heading">没有黑箱，只有规则<span class="heading-period">.</span></h1><p class="page-subtitle">你的数据留在本地，每一个信号都可以解释。</p></div></div>
+        <div class="method-grid"><article class="card data-card"><div class="card-top"><div><span class="eyebrow">YOUR DATA SOURCE</span><h2>当前行情数据</h2></div><span id="data-type" class="source-badge">内置历史快照</span></div><dl class="data-details"><div><dt>数据名称</dt><dd id="data-name">BTCUSDT · Binance</dd></div><div><dt>日线范围（UTC）</dt><dd id="data-range">—</dd></div><div><dt>完整日线</dt><dd id="data-count">—</dd></div><div><dt>概率校准</dt><dd>2018—2023 · 固定不重训</dd></div><div><dt>数据传输</dt><dd>无网络请求 · 无服务器存储</dd></div></dl><div class="data-actions"><button class="button primary" id="method-import">导入 CSV</button><button class="button" id="reset-data">恢复内置数据</button><button class="text-button" id="download-sample">下载示例 CSV ↓</button></div><p class="small-print">请使用 BTCUSDT 现货的 UTC 日线。导入会替换当前行情，不改变原始回测统计；刷新页面将恢复内置数据。</p></article>
+        <article class="card method-note"><span class="eyebrow">THE READING GUIDE</span><h2>三件容易混淆的事</h2><ol><li><strong>上涨概率 ≠ 历史准确率</strong><p>前者来自同状态历史校准，后者是在检验区间实际判断正确的比例。</p></li><li><strong>看多趋势 ≠ 必须涨</strong><p>均线与动量描述过去；弱趋势中也可能反弹，强趋势中也可能下跌。</p></li><li><strong>规则仓位 ≠ 实际交易</strong><p>这里只计算目标值，不连接交易账户，不会替你买卖。</p></li></ol></article></div>
+        <article class="card method-formulas"><div class="card-top"><div><span class="eyebrow">BTC–TVM / MODEL SPECIFICATION</span><h2>从一根日线，到一个信号</h2></div><span class="version">固定规则 v1.0</span></div><div class="formula-grid"><div><span class="step-number">01</span><h3>确认趋势</h3><code>close &gt; SMA(200)</code><p>收盘价高于最近 200 天均价，记 1 分。</p></div><div><span class="step-number">02</span><h3>确认动量</h3><code>close / close[t−63] − 1 &gt; 0</code><p>63 日动量大于零，再记 1 分。</p></div><div><span class="step-number">03</span><h3>控制敞口</h3><code>score = 2 ? min(1, 40% / σ) : 0</code><p>σ 为最近 30 日对数收益样本标准差 × √365；仅两项同时成立时持仓。</p></div></div><div class="timeline"><span>日线 t 完结</span><i>→</i><span>计算状态与概率</span><i>→</i><span>t+2 日开盘假设执行</span><i>→</i><span>7 / 30 日后观察涨跌</span></div><p class="small-print">回测使用 5 个百分点调仓带，并计入仓位漂移；此面板展示的是目标仓位，未模拟当前账户的成交与费用。波动率目标不是回撤上限，没有盘中止损。</p></article>
+        <div class="method-grid"><article class="card evidence-card"><h2>CSV 导入规范</h2><p>至少 201 根连续完整日线，最后日期不早于 2024-01-01。支持标准双引号、额外列和自动按日期排序。</p><pre>date,open,high,low,close,volume
+2026-01-01,87500,88900,86400,88300,12345</pre><p class="small-print">单行仅演示格式，不是实际行情。拒绝缺失日期、重复日期、空值、非法价格和未完成的当日日线；最大文件 5 MB。</p></article><article class="card evidence-card"><h2>使用边界</h2><p>单一交易所历史、有限市场周期、USDT 计价。成交冲击、交易所风险和盘中回撤不在当前回测范围。</p><p>导入数据来源无法自动核实，请自行确认品种与时区。页面不访问外部行情，内置数据不会自动更新。</p><p class="small-print">没有可靠证据支持“稳定达到 90%”。不要把概率数字当作投资承诺。</p></article></div>
+      </section>
+      <footer><span>序列 SIGNAL<span class="footer-divider">/</span>少一些确信，多一些证据。</span><span>RESEARCH ONLY · NO TRADE EXECUTION</span></footer>
+    </main>
+  </div>
+
+  <dialog id="import-dialog" aria-labelledby="import-title"><form method="dialog" class="dialog-close-form"><button class="icon-button" aria-label="关闭导入窗口">×</button></form><span class="eyebrow">BRING YOUR OWN DATA</span><h2 id="import-title">导入你的日线数据</h2><p class="dialog-description">上传 BTCUSDT 现货 CSV，在本地计算信号。<br>不会上传至服务器，也不会修改冻结回测。</p><label class="upload-zone" id="upload-zone" for="csv-file"><span class="upload-symbol" aria-hidden="true">↑</span><strong>选择文件，或拖放到这里</strong><span>CSV · 至少 201 根连续日线 · 最大 5 MB</span><input type="file" id="csv-file" accept=".csv,text/csv" aria-label="选择日线 CSV 文件"></label><div class="import-format"><span>必需字段</span><code>date, open, high, low, close, volume</code></div><p id="import-error" class="inline-error" role="alert" hidden></p><p id="import-progress" role="status" hidden>正在校验数据…</p><button class="text-button" id="dialog-sample">先下载一份示例 CSV ↓</button></dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <noscript><div class="no-script">请启用 JavaScript 以在本地计算模型。页面不会上传你的数据。</div></noscript>
+</body>
+</html>

@@ -1,0 +1,1057 @@
+{
+  "model": "BTC-TVM-1",
+  "data": {
+    "source": "https://data-api.binance.vision/api/v3/klines",
+    "symbol": "BTCUSDT",
+    "interval": "1d",
+    "timezone": "UTC",
+    "retrieved_at_utc": "2026-09-17T07:41:43.941415+00:00",
+    "first_closed_candle": "2017-08-17",
+    "last_closed_candle": "2026-09-16",
+    "rows": 3318,
+    "requests": [
+      "https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=1d&startTime=1502928000000&endTime=1789603199999&limit=1000",
+      "https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=1d&startTime=1589328000000&endTime=1789603199999&limit=1000",
+      "https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=1d&startTime=1675728000000&endTime=1789603199999&limit=1000",
+      "https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=1d&startTime=1762128000000&endTime=1789603199999&limit=1000"
+    ],
+    "sha256": "2bbd3ded2c21d1261e59e82257f24adc9a4a8b877a63346015a946e8b5e45f8e",
+    "protocol_sha256_before_download": "06b9cb7c7ff14df413c2886860a03465bb961d8e7cc702bca5db6e1f642f9618"
+  },
+  "metrics": {
+    "calibration": {
+      "trend_model": {
+        "days": 1371,
+        "start_open": "2018-04-01",
+        "end_valuation_open": "2022-01-01",
+        "total_return": 2.127831075341923,
+        "cagr": 0.35471562748263197,
+        "annual_volatility": 0.30126465669603947,
+        "sharpe": 1.1579592385673272,
+        "max_drawdown": -0.30919182850841986,
+        "calmar": 1.147234806281345,
+        "worst_day": -0.10995652495403174,
+        "longest_underwater_days": 503,
+        "mean_position": 0.2856100807296552,
+        "exposed_days_fraction": 0.4566010211524435,
+        "trading_days": 115,
+        "one_way_turnover": 32.63298720201724,
+        "sum_cost_fractions": 0.04894948080302586
+      },
+      "buy_hold": {
+        "days": 1371,
+        "start_open": "2018-04-01",
+        "end_valuation_open": "2022-01-01",
+        "total_return": 5.666817168064732,
+        "cagr": 0.6571088433774066,
+        "annual_volatility": 0.7377372662493156,
+        "sharpe": 1.0622530184726333,
+        "max_drawdown": -0.6744005214928237,
+        "calmar": 0.97435992772197,
+        "worst_day": -0.39505178597985025,
+        "longest_underwater_days": 485,
+        "mean_position": 1.0,
+        "exposed_days_fraction": 1.0,
+        "trading_days": 1,
+        "one_way_turnover": 0.9985022466300548,
+        "sum_cost_fractions": 0.0014977533699450823
+      },
+      "sma200": {
+        "days": 1371,
+        "start_open": "2018-04-01",
+        "end_valuation_open": "2022-01-01",
+        "total_return": 3.3361447333211727,
+        "cagr": 0.4777995112294888,
+        "annual_volatility": 0.5218653947729368,
+        "sharpe": 1.0092261377869316,
+        "max_drawdown": -0.5313009280622447,
+        "calmar": 0.8993011041258939,
+        "worst_day": -0.14419093866993005,
+        "longest_underwater_days": 512,
+        "mean_position": 0.5339168490153173,
+        "exposed_days_fraction": 0.5339168490153173,
+        "trading_days": 28,
+        "one_way_turnover": 27.979031452820767,
+        "sum_cost_fractions": 0.04196854717923115
+      },
+      "vol_hold": {
+        "days": 1371,
+        "start_open": "2018-04-01",
+        "end_valuation_open": "2022-01-01",
+        "total_return": 2.921908055674794,
+        "cagr": 0.4388192484998037,
+        "annual_volatility": 0.45404696290554447,
+        "sharpe": 1.031627060302369,
+        "max_drawdown": -0.5363672279590259,
+        "calmar": 0.8181321035768537,
+        "worst_day": -0.25179282418089377,
+        "longest_underwater_days": 482,
+        "mean_position": 0.6326642990230646,
+        "exposed_days_fraction": 1.0,
+        "trading_days": 171,
+        "one_way_turnover": 16.21367108687891,
+        "sum_cost_fractions": 0.024320506630318366
+      }
+    },
+    "validation": {
+      "trend_model": {
+        "days": 730,
+        "start_open": "2022-01-01",
+        "end_valuation_open": "2024-01-01",
+        "total_return": 0.37852885021600424,
+        "cagr": 0.17410768254705,
+        "annual_volatility": 0.23514187222930077,
+        "sharpe": 0.7986214424738296,
+        "max_drawdown": -0.25339316325776184,
+        "calmar": 0.6871048938677977,
+        "worst_day": -0.07326459017772613,
+        "longest_underwater_days": 229,
+        "mean_position": 0.3098672409213704,
+        "exposed_days_fraction": 0.3547945205479452,
+        "trading_days": 42,
+        "one_way_turnover": 11.406138824951714,
+        "sum_cost_fractions": 0.017109208237427575
+      },
+      "buy_hold": {
+        "days": 730,
+        "start_open": "2022-01-01",
+        "end_valuation_open": "2024-01-01",
+        "total_return": -0.08647654386473069,
+        "cagr": -0.0442157899738721,
+        "annual_volatility": 0.549656389253963,
+        "sharpe": 0.19344076583785524,
+        "max_drawdown": -0.6693124398346608,
+        "calmar": -0.06606150930766304,
+        "worst_day": -0.15387892090659738,
+        "longest_underwater_days": 729,
+        "mean_position": 1.0,
+        "exposed_days_fraction": 1.0,
+        "trading_days": 1,
+        "one_way_turnover": 0.9985022466300548,
+        "sum_cost_fractions": 0.0014977533699450823
+      },
+      "sma200": {
+        "days": 730,
+        "start_open": "2022-01-01",
+        "end_valuation_open": "2024-01-01",
+        "total_return": 0.7462755860359509,
+        "cagr": 0.3214672095954372,
+        "annual_volatility": 0.29368900276752197,
+        "sharpe": 1.0939194224077362,
+        "max_drawdown": -0.21972549831690558,
+        "calmar": 1.463040075266056,
+        "worst_day": -0.07334015302895769,
+        "longest_underwater_days": 118,
+        "mean_position": 0.4,
+        "exposed_days_fraction": 0.4,
+        "trading_days": 5,
+        "one_way_turnover": 4.995506739890164,
+        "sum_cost_fractions": 0.0074932601098352475
+      },
+      "vol_hold": {
+        "days": 730,
+        "start_open": "2022-01-01",
+        "end_valuation_open": "2024-01-01",
+        "total_return": 0.06415464834526485,
+        "cagr": 0.03157871650459376,
+        "annual_volatility": 0.41946687427428475,
+        "sharpe": 0.28447236065338377,
+        "max_drawdown": -0.5538987250043504,
+        "calmar": 0.05701171546178543,
+        "worst_day": -0.14142066649483598,
+        "longest_underwater_days": 701,
+        "mean_position": 0.7852582472052759,
+        "exposed_days_fraction": 1.0,
+        "trading_days": 85,
+        "one_way_turnover": 8.342461738102237,
+        "sum_cost_fractions": 0.012513692607153355
+      }
+    },
+    "holdout": {
+      "trend_model": {
+        "days": 989,
+        "start_open": "2024-01-01",
+        "end_valuation_open": "2026-09-16",
+        "total_return": 0.4266648513194915,
+        "cagr": 0.140129046516702,
+        "annual_volatility": 0.2669222070978047,
+        "sharpe": 0.6236238359372918,
+        "max_drawdown": -0.31732094960974266,
+        "calmar": 0.4416003629418095,
+        "worst_day": -0.07305395314789509,
+        "longest_underwater_days": 398,
+        "mean_position": 0.38814597925305816,
+        "exposed_days_fraction": 0.45197168857431747,
+        "trading_days": 75,
+        "one_way_turnover": 40.39831168504108,
+        "sum_cost_fractions": 0.06059746752756162
+      },
+      "buy_hold": {
+        "days": 989,
+        "start_open": "2024-01-01",
+        "end_valuation_open": "2026-09-16",
+        "total_return": 0.7863005740091615,
+        "cagr": 0.2387573807146084,
+        "annual_volatility": 0.472987375505715,
+        "sharpe": 0.6880842494282705,
+        "max_drawdown": -0.5297176591351062,
+        "calmar": 0.4507257339776784,
+        "worst_day": -0.140174294452165,
+        "longest_underwater_days": 344,
+        "mean_position": 1.0,
+        "exposed_days_fraction": 1.0,
+        "trading_days": 1,
+        "one_way_turnover": 0.9985022466300548,
+        "sum_cost_fractions": 0.0014977533699450823
+      },
+      "sma200": {
+        "days": 989,
+        "start_open": "2024-01-01",
+        "end_valuation_open": "2026-09-16",
+        "total_return": 0.3269767196046067,
+        "cagr": 0.11005344410125995,
+        "annual_volatility": 0.3635527814788823,
+        "sharpe": 0.4677914597709936,
+        "max_drawdown": -0.35859918000542834,
+        "calmar": 0.30689820344707425,
+        "worst_day": -0.08538061794638996,
+        "longest_underwater_days": 602,
+        "mean_position": 0.5945399393326593,
+        "exposed_days_fraction": 0.5945399393326593,
+        "trading_days": 29,
+        "one_way_turnover": 28.977533699450824,
+        "sum_cost_fractions": 0.04346630054917623
+      },
+      "vol_hold": {
+        "days": 989,
+        "start_open": "2024-01-01",
+        "end_valuation_open": "2026-09-16",
+        "total_return": 0.6647018688002628,
+        "cagr": 0.20694188887660014,
+        "annual_volatility": 0.401087670621167,
+        "sharpe": 0.6688139860426245,
+        "max_drawdown": -0.5075277202830382,
+        "calmar": 0.40774499718201157,
+        "worst_day": -0.125569979189476,
+        "longest_underwater_days": 344,
+        "mean_position": 0.8558791306093007,
+        "exposed_days_fraction": 1.0,
+        "trading_days": 85,
+        "one_way_turnover": 8.304951748406014,
+        "sum_cost_fractions": 0.012457427622609018
+      }
+    },
+    "full_descriptive_only": {
+      "trend_model": {
+        "days": 3090,
+        "start_open": "2018-04-01",
+        "end_valuation_open": "2026-09-16",
+        "total_return": 5.165259539673207,
+        "cagr": 0.23968517332234485,
+        "annual_volatility": 0.2759464902992777,
+        "sharpe": 0.9157778024169567,
+        "max_drawdown": -0.3173209496097422,
+        "calmar": 0.7553398967736675,
+        "worst_day": -0.10995652495403174,
+        "longest_underwater_days": 965,
+        "mean_position": 0.3241900076613299,
+        "exposed_days_fraction": 0.43106796116504853,
+        "trading_days": 231,
+        "one_way_turnover": 83.5660291659182,
+        "sum_cost_fractions": 0.12534904374887731
+      },
+      "buy_hold": {
+        "days": 3090,
+        "start_open": "2018-04-01",
+        "end_valuation_open": "2026-09-16",
+        "total_return": 9.91175718364096,
+        "cagr": 0.3261700367993512,
+        "annual_volatility": 0.6200711453581095,
+        "sharpe": 0.7698415240239467,
+        "max_drawdown": -0.7662925085545054,
+        "calmar": 0.42564690788198034,
+        "worst_day": -0.39505178597985025,
+        "longest_underwater_days": 846,
+        "mean_position": 1.0,
+        "exposed_days_fraction": 1.0,
+        "trading_days": 1,
+        "one_way_turnover": 0.9985022466300548,
+        "sum_cost_fractions": 0.0014977533699450823
+      },
+      "sma200": {
+        "days": 3090,
+        "start_open": "2018-04-01",
+        "end_valuation_open": "2026-09-16",
+        "total_return": 9.063077316811354,
+        "cagr": 0.3135467937562477,
+        "annual_volatility": 0.4283676470104635,
+        "sharpe": 0.8502016418539525,
+        "max_drawdown": -0.5499178148417412,
+        "calmar": 0.5701702787106145,
+        "worst_day": -0.14419093866993005,
+        "longest_underwater_days": 1036,
+        "mean_position": 0.5216828478964401,
+        "exposed_days_fraction": 0.5216828478964401,
+        "trading_days": 61,
+        "one_way_turnover": 60.9535696455317,
+        "sum_cost_fractions": 0.09143035446829754
+      },
+      "vol_hold": {
+        "days": 3090,
+        "start_open": "2018-04-01",
+        "end_valuation_open": "2026-09-16",
+        "total_return": 5.969332793652608,
+        "cagr": 0.25776717205969146,
+        "annual_volatility": 0.4295450650052755,
+        "sharpe": 0.7502465726044083,
+        "max_drawdown": -0.6446309999343498,
+        "calmar": 0.39986778806160866,
+        "worst_day": -0.25179282418089377,
+        "longest_underwater_days": 833,
+        "mean_position": 0.7401990695168601,
+        "exposed_days_fraction": 1.0,
+        "trading_days": 339,
+        "one_way_turnover": 31.356636551585225,
+        "sum_cost_fractions": 0.04703495482737784
+      }
+    }
+  },
+  "validation_forecast": {
+    "7": {
+      "n_calibration_overlapping": 1362,
+      "n_evaluation_overlapping": 721,
+      "latest_calibration_label_end": "2021-12-31",
+      "calibration": [
+        {
+          "score": 0,
+          "n_overlapping": 477,
+          "p_up": 0.5511482254697286,
+          "return_q10": -0.09023601011126237,
+          "return_median": 0.00839954462267345,
+          "return_q90": 0.13950788123105373
+        },
+        {
+          "score": 1,
+          "n_overlapping": 259,
+          "p_up": 0.5287356321839081,
+          "return_q10": -0.13968647139489537,
+          "return_median": 0.004410261090952217,
+          "return_q90": 0.1281208703846305
+        },
+        {
+          "score": 2,
+          "n_overlapping": 626,
+          "p_up": 0.5605095541401274,
+          "return_q10": -0.10310735354398315,
+          "return_median": 0.013864016598750584,
+          "return_q90": 0.15606201941461084
+        }
+      ],
+      "baseline_probability": 0.5513196480938416,
+      "brier": 0.25213955107452657,
+      "baseline_brier": 0.2527048847105643,
+      "brier_improvement": 0.0005653336360377641,
+      "brier_improvement_ci95": [
+        {
+          "block_days": 30,
+          "ci95": [
+            -0.001079443667323462,
+            0.002061329833437257
+          ]
+        },
+        {
+          "block_days": 60,
+          "ci95": [
+            -0.0011029844063910111,
+            0.0022677579115226304
+          ]
+        },
+        {
+          "block_days": 90,
+          "ci95": [
+            -0.001258069429897841,
+            0.0023184890277083456
+          ]
+        }
+      ],
+      "direction_accuracy": 0.49930651872399445,
+      "baseline_direction_accuracy": 0.49930651872399445,
+      "auc": 0.5286895967990151,
+      "observed_regimes": [
+        {
+          "score": 0,
+          "n_overlapping": 379,
+          "observed_p_up": 0.5092348284960422,
+          "mean_forward_return": 0.0009003328647871788
+        },
+        {
+          "score": 1,
+          "n_overlapping": 90,
+          "observed_p_up": 0.4,
+          "mean_forward_return": -0.015080475324888796
+        },
+        {
+          "score": 2,
+          "n_overlapping": 252,
+          "observed_p_up": 0.5198412698412699,
+          "mean_forward_return": 0.01215778702482339
+        }
+      ]
+    },
+    "30": {
+      "n_calibration_overlapping": 1339,
+      "n_evaluation_overlapping": 698,
+      "latest_calibration_label_end": "2021-12-31",
+      "calibration": [
+        {
+          "score": 0,
+          "n_overlapping": 472,
+          "p_up": 0.5654008438818565,
+          "return_q10": -0.18819485563138866,
+          "return_median": 0.02194773943081152,
+          "return_q90": 0.32085252267741016
+        },
+        {
+          "score": 1,
+          "n_overlapping": 248,
+          "p_up": 0.528,
+          "return_q10": -0.220605573604685,
+          "return_median": 0.024672540717990854,
+          "return_q90": 0.35661130947969655
+        },
+        {
+          "score": 2,
+          "n_overlapping": 619,
+          "p_up": 0.5684380032206119,
+          "return_q10": -0.21492344632918256,
+          "return_median": 0.03982722924674653,
+          "return_q90": 0.44675927286057826
+        }
+      ],
+      "baseline_probability": 0.5600298284862043,
+      "brier": 0.24967237950491,
+      "baseline_brier": 0.25067949124141986,
+      "brier_improvement": 0.0010071117365098167,
+      "brier_improvement_ci95": [
+        {
+          "block_days": 30,
+          "ci95": [
+            -0.0023679975619204383,
+            0.004289706824375735
+          ]
+        },
+        {
+          "block_days": 60,
+          "ci95": [
+            -0.0031998862713577096,
+            0.004552760472763419
+          ]
+        },
+        {
+          "block_days": 90,
+          "ci95": [
+            -0.0036507413562607907,
+            0.004575693389163895
+          ]
+        }
+      ],
+      "direction_accuracy": 0.5243553008595988,
+      "baseline_direction_accuracy": 0.5243553008595988,
+      "auc": 0.5183315228125617,
+      "observed_regimes": [
+        {
+          "score": 0,
+          "n_overlapping": 379,
+          "observed_p_up": 0.5620052770448549,
+          "mean_forward_return": 0.012456286800270387
+        },
+        {
+          "score": 1,
+          "n_overlapping": 90,
+          "observed_p_up": 0.3888888888888889,
+          "mean_forward_return": -0.033566707885677456
+        },
+        {
+          "score": 2,
+          "n_overlapping": 229,
+          "observed_p_up": 0.5152838427947598,
+          "mean_forward_return": 0.03787591079698894
+        }
+      ]
+    }
+  },
+  "holdout_forecast": {
+    "7": {
+      "n_calibration_overlapping": 2092,
+      "n_evaluation_overlapping": 981,
+      "latest_calibration_label_end": "2023-12-31",
+      "calibration": [
+        {
+          "score": 0,
+          "n_overlapping": 860,
+          "p_up": 0.5301624129930395,
+          "return_q10": -0.09005439338959298,
+          "return_median": 0.005548107859974727,
+          "return_q90": 0.11547894254612581
+        },
+        {
+          "score": 1,
+          "n_overlapping": 354,
+          "p_up": 0.4887640449438202,
+          "return_q10": -0.13506604614725962,
+          "return_median": -0.0034576875531474593,
+          "return_q90": 0.1302053787982794
+        },
+        {
+          "score": 2,
+          "n_overlapping": 878,
+          "p_up": 0.5488636363636363,
+          "return_q10": -0.09494953054716519,
+          "return_median": 0.007874168914722146,
+          "return_q90": 0.14391459127840847
+        }
+      ],
+      "baseline_probability": 0.5310410697230181,
+      "brier": 0.24864237397840097,
+      "baseline_brier": 0.24934979209122723,
+      "brier_improvement": 0.0007074181128262652,
+      "brier_improvement_ci95": [
+        {
+          "block_days": 30,
+          "ci95": [
+            -0.0020823122194541513,
+            0.0036096357599722205
+          ]
+        },
+        {
+          "block_days": 60,
+          "ci95": [
+            -0.0019315528832420667,
+            0.0034388574092952813
+          ]
+        },
+        {
+          "block_days": 90,
+          "ci95": [
+            -0.0017772590303923809,
+            0.0028563698524125517
+          ]
+        }
+      ],
+      "direction_accuracy": 0.5402650356778798,
+      "baseline_direction_accuracy": 0.5259938837920489,
+      "auc": 0.5209323164124364,
+      "observed_regimes": [
+        {
+          "score": 0,
+          "n_overlapping": 318,
+          "observed_p_up": 0.5534591194968553,
+          "mean_forward_return": 0.009553467198165586
+        },
+        {
+          "score": 1,
+          "n_overlapping": 224,
+          "observed_p_up": 0.46875,
+          "mean_forward_return": -0.008026838908484494
+        },
+        {
+          "score": 2,
+          "n_overlapping": 439,
+          "observed_p_up": 0.5353075170842825,
+          "mean_forward_return": 0.010527520635949895
+        }
+      ]
+    },
+    "30": {
+      "n_calibration_overlapping": 2069,
+      "n_evaluation_overlapping": 958,
+      "latest_calibration_label_end": "2023-12-31",
+      "calibration": [
+        {
+          "score": 0,
+          "n_overlapping": 860,
+          "p_up": 0.5580046403712297,
+          "return_q10": -0.20300656873327372,
+          "return_median": 0.01646835273511127,
+          "return_q90": 0.30586372715949994
+        },
+        {
+          "score": 1,
+          "n_overlapping": 354,
+          "p_up": 0.4691011235955056,
+          "return_q10": -0.22592259460824637,
+          "return_median": -0.02290264328783781,
+          "return_q90": 0.31554783785278107
+        },
+        {
+          "score": 2,
+          "n_overlapping": 855,
+          "p_up": 0.5495915985997666,
+          "return_q10": -0.15730782006665234,
+          "return_median": 0.028240363620589015,
+          "return_q90": 0.40371203078298207
+        }
+      ],
+      "baseline_probability": 0.5393529695799131,
+      "brier": 0.24138253400451887,
+      "baseline_brier": 0.2473586740674182,
+      "brier_improvement": 0.005976140062899357,
+      "brier_improvement_ci95": [
+        {
+          "block_days": 30,
+          "ci95": [
+            0.0005197308630099046,
+            0.012093463597240076
+          ]
+        },
+        {
+          "block_days": 60,
+          "ci95": [
+            0.0005935187845980168,
+            0.012177133896868406
+          ]
+        },
+        {
+          "block_days": 90,
+          "ci95": [
+            0.0009609059334337327,
+            0.011932585684766552
+          ]
+        }
+      ],
+      "direction_accuracy": 0.6137787056367432,
+      "baseline_direction_accuracy": 0.5532359081419624,
+      "auc": 0.6109570622465174,
+      "observed_regimes": [
+        {
+          "score": 0,
+          "n_overlapping": 315,
+          "observed_p_up": 0.6571428571428571,
+          "mean_forward_return": 0.032272614245649964
+        },
+        {
+          "score": 1,
+          "n_overlapping": 224,
+          "observed_p_up": 0.3705357142857143,
+          "mean_forward_return": -0.030085454000510138
+        },
+        {
+          "score": 2,
+          "n_overlapping": 419,
+          "observed_p_up": 0.5727923627684964,
+          "mean_forward_return": 0.05710261598481582
+        }
+      ]
+    }
+  },
+  "holdout_sharpe_uncertainty": [
+    {
+      "comparator": "buy_hold",
+      "block_days": 30,
+      "difference": -0.06446041349097875,
+      "ci95": [
+        -1.0687814003587557,
+        0.9049147619034148
+      ]
+    },
+    {
+      "comparator": "buy_hold",
+      "block_days": 60,
+      "difference": -0.06446041349097875,
+      "ci95": [
+        -1.1143134775421968,
+        0.7754574508804144
+      ]
+    },
+    {
+      "comparator": "buy_hold",
+      "block_days": 90,
+      "difference": -0.06446041349097875,
+      "ci95": [
+        -1.1186421012679366,
+        0.644394855404455
+      ]
+    },
+    {
+      "comparator": "vol_hold",
+      "block_days": 30,
+      "difference": -0.04519015010533278,
+      "ci95": [
+        -1.1081042234860443,
+        0.9628030819379447
+      ]
+    },
+    {
+      "comparator": "vol_hold",
+      "block_days": 60,
+      "difference": -0.04519015010533278,
+      "ci95": [
+        -1.0858417722866416,
+        0.880101892099155
+      ]
+    },
+    {
+      "comparator": "vol_hold",
+      "block_days": 90,
+      "difference": -0.04519015010533278,
+      "ci95": [
+        -1.117083629230952,
+        0.7102463583882835
+      ]
+    },
+    {
+      "comparator": "sma200",
+      "block_days": 30,
+      "difference": 0.15583237616629814,
+      "ci95": [
+        -0.42964657640807846,
+        0.7459797881560162
+      ]
+    },
+    {
+      "comparator": "sma200",
+      "block_days": 60,
+      "difference": 0.15583237616629814,
+      "ci95": [
+        -0.546645561512353,
+        0.7772423049433176
+      ]
+    },
+    {
+      "comparator": "sma200",
+      "block_days": 90,
+      "difference": 0.15583237616629814,
+      "ci95": [
+        -0.6114777211300744,
+        0.8410729200884357
+      ]
+    }
+  ],
+  "rolling_3year_descriptive": [
+    {
+      "strategy": "trend_model",
+      "windows_overlapping": 1996,
+      "minimum_3year_total_return": 0.16725493446804118,
+      "positive_window_fraction": 1.0
+    },
+    {
+      "strategy": "buy_hold",
+      "windows_overlapping": 1996,
+      "minimum_3year_total_return": -0.09689500603963774,
+      "positive_window_fraction": 0.996993987975952
+    },
+    {
+      "strategy": "sma200",
+      "windows_overlapping": 1996,
+      "minimum_3year_total_return": 0.11137291007981198,
+      "positive_window_fraction": 1.0
+    },
+    {
+      "strategy": "vol_hold",
+      "windows_overlapping": 1996,
+      "minimum_3year_total_return": 0.15565293060641694,
+      "positive_window_fraction": 1.0
+    }
+  ],
+  "sensitivity": [
+    {
+      "sma": 150,
+      "momentum": 42,
+      "days": 989,
+      "start_open": "2024-01-01",
+      "end_valuation_open": "2026-09-16",
+      "total_return": 0.33429601413309773,
+      "cagr": 0.11230920095937158,
+      "annual_volatility": 0.2625506768291815,
+      "sharpe": 0.5355085208435135,
+      "max_drawdown": -0.32515480686257947,
+      "calmar": 0.34540224714204193,
+      "worst_day": -0.07305395314789509,
+      "longest_underwater_days": 637,
+      "mean_position": 0.3872125265938949,
+      "exposed_days_fraction": 0.4408493427704752,
+      "trading_days": 84,
+      "one_way_turnover": 48.224725921013174,
+      "sum_cost_fractions": 0.07233708888151977
+    },
+    {
+      "sma": 150,
+      "momentum": 63,
+      "days": 989,
+      "start_open": "2024-01-01",
+      "end_valuation_open": "2026-09-16",
+      "total_return": 0.6787628729424173,
+      "cagr": 0.21069429053397526,
+      "annual_volatility": 0.266996598205866,
+      "sharpe": 0.8483727258343264,
+      "max_drawdown": -0.2567139223559629,
+      "calmar": 0.8207357380556236,
+      "worst_day": -0.07305395314789509,
+      "longest_underwater_days": 398,
+      "mean_position": 0.40490372444449424,
+      "exposed_days_fraction": 0.46814964610717896,
+      "trading_days": 75,
+      "one_way_turnover": 41.33993626488059,
+      "sum_cost_fractions": 0.062009904397320896
+    },
+    {
+      "sma": 150,
+      "momentum": 84,
+      "days": 989,
+      "start_open": "2024-01-01",
+      "end_valuation_open": "2026-09-16",
+      "total_return": 0.6798970247398826,
+      "cagr": 0.21099609131587016,
+      "annual_volatility": 0.2755349782151523,
+      "sharpe": 0.8315289345807774,
+      "max_drawdown": -0.233162776332967,
+      "calmar": 0.9049304294376654,
+      "worst_day": -0.07305395314789509,
+      "longest_underwater_days": 398,
+      "mean_position": 0.44602112540476874,
+      "exposed_days_fraction": 0.5146612740141557,
+      "trading_days": 72,
+      "one_way_turnover": 33.96125750779833,
+      "sum_cost_fractions": 0.0509418862616975
+    },
+    {
+      "sma": 200,
+      "momentum": 42,
+      "days": 989,
+      "start_open": "2024-01-01",
+      "end_valuation_open": "2026-09-16",
+      "total_return": 0.2868816936539482,
+      "cagr": 0.0975549847462962,
+      "annual_volatility": 0.2578058497071743,
+      "sharpe": 0.48881962255580136,
+      "max_drawdown": -0.27050896256529133,
+      "calmar": 0.36063494466564994,
+      "worst_day": -0.07305395314789509,
+      "longest_underwater_days": 637,
+      "mean_position": 0.36342377376407564,
+      "exposed_days_fraction": 0.41759352881698686,
+      "trading_days": 83,
+      "one_way_turnover": 47.003769317266716,
+      "sum_cost_fractions": 0.07050565397590008
+    },
+    {
+      "sma": 200,
+      "momentum": 63,
+      "days": 989,
+      "start_open": "2024-01-01",
+      "end_valuation_open": "2026-09-16",
+      "total_return": 0.4266648513194915,
+      "cagr": 0.140129046516702,
+      "annual_volatility": 0.2669222070978047,
+      "sharpe": 0.6236238359372918,
+      "max_drawdown": -0.31732094960974266,
+      "calmar": 0.4416003629418095,
+      "worst_day": -0.07305395314789509,
+      "longest_underwater_days": 398,
+      "mean_position": 0.38814597925305816,
+      "exposed_days_fraction": 0.45197168857431747,
+      "trading_days": 75,
+      "one_way_turnover": 40.39831168504108,
+      "sum_cost_fractions": 0.06059746752756162
+    },
+    {
+      "sma": 200,
+      "momentum": 84,
+      "days": 989,
+      "start_open": "2024-01-01",
+      "end_valuation_open": "2026-09-16",
+      "total_return": 0.7108778201706867,
+      "cagr": 0.21919092833341391,
+      "annual_volatility": 0.2749430854237462,
+      "sharpe": 0.8573238765669227,
+      "max_drawdown": -0.23910776457207628,
+      "calmar": 0.9167035153613396,
+      "worst_day": -0.07305395314789509,
+      "longest_underwater_days": 344,
+      "mean_position": 0.4241454349209923,
+      "exposed_days_fraction": 0.4924165824064712,
+      "trading_days": 67,
+      "one_way_turnover": 29.7618133568801,
+      "sum_cost_fractions": 0.04464272003532016
+    },
+    {
+      "sma": 250,
+      "momentum": 42,
+      "days": 989,
+      "start_open": "2024-01-01",
+      "end_valuation_open": "2026-09-16",
+      "total_return": 0.42462070793737916,
+      "cagr": 0.13952588115873565,
+      "annual_volatility": 0.2601354218762506,
+      "sharpe": 0.6310937322842473,
+      "max_drawdown": -0.2555760583827703,
+      "calmar": 0.545927040434167,
+      "worst_day": -0.07305395314789509,
+      "longest_underwater_days": 637,
+      "mean_position": 0.376394600178207,
+      "exposed_days_fraction": 0.43478260869565216,
+      "trading_days": 88,
+      "one_way_turnover": 47.65907652534778,
+      "sum_cost_fractions": 0.07148861478802167
+    },
+    {
+      "sma": 250,
+      "momentum": 63,
+      "days": 989,
+      "start_open": "2024-01-01",
+      "end_valuation_open": "2026-09-16",
+      "total_return": 0.42373727611038214,
+      "cagr": 0.13926503794911516,
+      "annual_volatility": 0.2653033245526638,
+      "sharpe": 0.6230485190824652,
+      "max_drawdown": -0.3243463569266227,
+      "calmar": 0.42937136482350335,
+      "worst_day": -0.07305395314789509,
+      "longest_underwater_days": 398,
+      "mean_position": 0.39153674136238337,
+      "exposed_days_fraction": 0.45601617795753285,
+      "trading_days": 80,
+      "one_way_turnover": 45.77021410451899,
+      "sum_cost_fractions": 0.0686553211567785
+    },
+    {
+      "sma": 250,
+      "momentum": 84,
+      "days": 989,
+      "start_open": "2024-01-01",
+      "end_valuation_open": "2026-09-16",
+      "total_return": 0.73808077691161,
+      "cagr": 0.22630962105230767,
+      "annual_volatility": 0.2754178728870589,
+      "sharpe": 0.8774707358747939,
+      "max_drawdown": -0.22700957829552293,
+      "calmar": 0.9969166180190686,
+      "worst_day": -0.07305395314789509,
+      "longest_underwater_days": 344,
+      "mean_position": 0.43314045215763536,
+      "exposed_days_fraction": 0.5025278058645096,
+      "trading_days": 71,
+      "one_way_turnover": 31.866284151062985,
+      "sum_cost_fractions": 0.047799426226594485
+    }
+  ],
+  "stress": [
+    {
+      "case": "cost_30bps",
+      "days": 989,
+      "start_open": "2024-01-01",
+      "end_valuation_open": "2026-09-16",
+      "total_return": 0.3427304042841337,
+      "cagr": 0.11489896176068348,
+      "annual_volatility": 0.266836748854099,
+      "sharpe": 0.5398749442964574,
+      "max_drawdown": -0.33440369665551317,
+      "calmar": 0.3435935753995176,
+      "worst_day": -0.07305395314789509,
+      "longest_underwater_days": 433,
+      "mean_position": 0.38814597925305816,
+      "exposed_days_fraction": 0.45197168857431747,
+      "trading_days": 75,
+      "one_way_turnover": 40.37253173279458,
+      "sum_cost_fractions": 0.12111759519838375
+    },
+    {
+      "case": "cost_50bps",
+      "days": 989,
+      "start_open": "2024-01-01",
+      "end_valuation_open": "2026-09-16",
+      "total_return": 0.23845045419140098,
+      "cagr": 0.08212581534605579,
+      "annual_volatility": 0.26687948662212796,
+      "sharpe": 0.42804134783920916,
+      "max_drawdown": -0.3565164743316309,
+      "calmar": 0.23035629840112948,
+      "worst_day": -0.07305395314789509,
+      "longest_underwater_days": 483,
+      "mean_position": 0.38814597925305816,
+      "exposed_days_fraction": 0.45197168857431747,
+      "trading_days": 75,
+      "one_way_turnover": 40.338281572649805,
+      "sum_cost_fractions": 0.20169140786324907
+    },
+    {
+      "case": "delay_1_days",
+      "days": 989,
+      "start_open": "2024-01-01",
+      "end_valuation_open": "2026-09-16",
+      "total_return": 0.4847304528924241,
+      "cagr": 0.1570395659337711,
+      "annual_volatility": 0.2677993721567644,
+      "sharpe": 0.6775958954331207,
+      "max_drawdown": -0.2996635914988691,
+      "calmar": 0.5240528725838346,
+      "worst_day": -0.07305395314789509,
+      "longest_underwater_days": 637,
+      "mean_position": 0.38843524917547023,
+      "exposed_days_fraction": 0.45197168857431747,
+      "trading_days": 75,
+      "one_way_turnover": 40.35256986059062,
+      "sum_cost_fractions": 0.060528854790885926
+    },
+    {
+      "case": "delay_3_days",
+      "days": 989,
+      "start_open": "2024-01-01",
+      "end_valuation_open": "2026-09-16",
+      "total_return": 0.46868059942472473,
+      "cagr": 0.1524077052026449,
+      "annual_volatility": 0.2652786410477313,
+      "sharpe": 0.6663750728239876,
+      "max_drawdown": -0.271266724152617,
+      "calmar": 0.5618370836995805,
+      "worst_day": -0.07305395314789509,
+      "longest_underwater_days": 398,
+      "mean_position": 0.3882848515067736,
+      "exposed_days_fraction": 0.45197168857431747,
+      "trading_days": 75,
+      "one_way_turnover": 40.462227113702866,
+      "sum_cost_fractions": 0.0606933406705543
+    }
+  ],
+  "checks": {
+    "indicator_prefix_invariance": true,
+    "future_price_mutation_does_not_change_past_signals": true,
+    "future_price_mutation_does_not_change_past_pnl": true,
+    "buy_hold_matches_price_ratio_without_costs": true,
+    "cash_has_zero_return_and_fees": true,
+    "entry_exit_cost_accounting": true,
+    "two_day_signal_execution_lag": true,
+    "finite_unleveraged_portfolios": true,
+    "sufficient_warmup_before_evaluation": true
+  },
+  "acceptance": {
+    "holdout_net_cagr_positive": true,
+    "holdout_max_drawdown_no_worse_than": true,
+    "holdout_sharpe_above_buy_hold": false,
+    "holdout_sharpe_above_vol_hold": false,
+    "positive_sharpe_difference_lower_95pct_bound_vs_vol_hold_all_blocks": false,
+    "forecast_brier_improvement_lower_95pct_bound_positive_both_horizons_all_blocks": false,
+    "at_least_7_of_9_neighborhood_variants_positive_cagr_and_dd_above_minus_40pct": true,
+    "50bps_cost_stress_positive_cagr": true,
+    "extra_day_delay_positive_cagr": true
+  },
+  "all_acceptance_checks_passed": false,
+  "latest_closed_candle_signal": {
+    "candle_date_utc": "2026-09-16",
+    "close_usdt": 76206.01,
+    "sma200": 70319.4397,
+    "momentum63": 0.17681265816998737,
+    "annual_volatility30": 0.4885667626935294,
+    "score": 2,
+    "unexecuted_target_btc_weight": 0.8187212691153001,
+    "earliest_assumed_execution_utc": "2026-09-18"
+  },
+  "environment": {
+    "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+    "platform": "macOS-26.6-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.4",
+    "pandas": "3.0.2",
+    "matplotlib": "3.10.8"
+  },
+  "research_script_sha256": "4c2c8cc50ea3a2c77d1734d1256fa2525c6874a63d4f5f460d5db337f91bb9d0"
+}

@@ -1,0 +1,18 @@
+{
+  "source": "https://data-api.binance.vision/api/v3/klines",
+  "symbol": "BTCUSDT",
+  "interval": "1d",
+  "timezone": "UTC",
+  "retrieved_at_utc": "2026-09-17T07:41:43.941415+00:00",
+  "first_closed_candle": "2017-08-17",
+  "last_closed_candle": "2026-09-16",
+  "rows": 3318,
+  "requests": [
+    "https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=1d&startTime=1502928000000&endTime=1789603199999&limit=1000",
+    "https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=1d&startTime=1589328000000&endTime=1789603199999&limit=1000",
+    "https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=1d&startTime=1675728000000&endTime=1789603199999&limit=1000",
+    "https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=1d&startTime=1762128000000&endTime=1789603199999&limit=1000"
+  ],
+  "sha256": "2bbd3ded2c21d1261e59e82257f24adc9a4a8b877a63346015a946e8b5e45f8e",
+  "protocol_sha256_before_download": "06b9cb7c7ff14df413c2886860a03465bb961d8e7cc702bca5db6e1f642f9618"
+}

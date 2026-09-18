@@ -1,0 +1,419 @@
+{
+  "name": "BTC-Direction-V2",
+  "target_horizon_days": 30,
+  "data": {
+    "start": "2017-08-17",
+    "end": "2026-09-16",
+    "rows": 3318,
+    "sha256": "2bbd3ded2c21d1261e59e82257f24adc9a4a8b877a63346015a946e8b5e45f8e"
+  },
+  "reused_signal_start": "2024-01-01",
+  "reused_signal_end": "2026-08-15",
+  "reused_label_end_max": "2026-09-16",
+  "candidate_count": 40,
+  "selected_candidate": {
+    "id": "knn_interactions_expanding_k_150",
+    "family": "knn",
+    "window": null,
+    "features": "interactions",
+    "neighbors": 150
+  },
+  "family_winners": {
+    "baseline": "always_up",
+    "regime": "regime_expanding",
+    "logistic": "logistic_basic_expanding_l2_0.1",
+    "knn": "knn_interactions_expanding_k_150"
+  },
+  "protocol_sha256": "a12fb968e55bbafcd71a5ec2a43a6c7aab74dcf0b2d92b2fda8c96834462a9e9",
+  "data_sha256": "2bbd3ded2c21d1261e59e82257f24adc9a4a8b877a63346015a946e8b5e45f8e",
+  "selected_development": {
+    "accuracy": 0.562631210636809,
+    "mean_year_accuracy": 0.5651028189653835,
+    "worst_year_accuracy": 0.47540983606557374,
+    "brier": 0.24491113538514625
+  },
+  "reused_history_metrics": {
+    "always_up": {
+      "total": 958,
+      "correct": 530,
+      "accuracy": 0.5532359081419624,
+      "coverage": 1.0,
+      "brier": 0.44676409185803756,
+      "balanced_accuracy": 0.5,
+      "observed_up_fraction": 0.5532359081419624,
+      "predicted_up_fraction": 1.0,
+      "up_recall": 1.0,
+      "down_recall": 0.0,
+      "confusion": {
+        "tp": 530,
+        "tn": 0,
+        "fp": 428,
+        "fn": 0
+      }
+    },
+    "historical_prior": {
+      "total": 958,
+      "correct": 530,
+      "accuracy": 0.5532359081419624,
+      "coverage": 1.0,
+      "brier": 0.24834029395933363,
+      "balanced_accuracy": 0.5,
+      "observed_up_fraction": 0.5532359081419624,
+      "predicted_up_fraction": 1.0,
+      "up_recall": 1.0,
+      "down_recall": 0.0,
+      "confusion": {
+        "tp": 530,
+        "tn": 0,
+        "fp": 428,
+        "fn": 0
+      }
+    },
+    "knn_interactions_expanding_k_150": {
+      "total": 958,
+      "correct": 473,
+      "accuracy": 0.49373695198329853,
+      "coverage": 1.0,
+      "brier": 0.2811891875675895,
+      "balanced_accuracy": 0.4745547522482807,
+      "observed_up_fraction": 0.5532359081419624,
+      "predicted_up_fraction": 0.6774530271398748,
+      "up_recall": 0.6547169811320754,
+      "down_recall": 0.29439252336448596,
+      "confusion": {
+        "tp": 347,
+        "tn": 126,
+        "fp": 302,
+        "fn": 183
+      }
+    },
+    "logistic_basic_expanding_l2_0.1": {
+      "total": 958,
+      "correct": 500,
+      "accuracy": 0.5219206680584552,
+      "coverage": 1.0,
+      "brier": 0.2537284619987491,
+      "balanced_accuracy": 0.4818153764768119,
+      "observed_up_fraction": 0.5532359081419624,
+      "predicted_up_fraction": 0.8747390396659708,
+      "up_recall": 0.8584905660377359,
+      "down_recall": 0.10514018691588785,
+      "confusion": {
+        "tp": 455,
+        "tn": 45,
+        "fp": 383,
+        "fn": 75
+      }
+    },
+    "regime_expanding": {
+      "total": 958,
+      "correct": 588,
+      "accuracy": 0.6137787056367432,
+      "coverage": 1.0,
+      "brier": 0.24148273335571363,
+      "balanced_accuracy": 0.5864177393757715,
+      "observed_up_fraction": 0.5532359081419624,
+      "predicted_up_fraction": 0.7661795407098121,
+      "up_recall": 0.8433962264150944,
+      "down_recall": 0.3294392523364486,
+      "confusion": {
+        "tp": 447,
+        "tn": 141,
+        "fp": 287,
+        "fn": 83
+      }
+    },
+    "V1_frozen_probability": {
+      "total": 958,
+      "correct": 588,
+      "accuracy": 0.6137787056367432,
+      "coverage": 1.0,
+      "brier": 0.24138253400451887,
+      "balanced_accuracy": 0.5864177393757715,
+      "observed_up_fraction": 0.5532359081419624,
+      "predicted_up_fraction": 0.7661795407098121,
+      "up_recall": 0.8433962264150944,
+      "down_recall": 0.3294392523364486,
+      "confusion": {
+        "tp": 447,
+        "tn": 141,
+        "fp": 287,
+        "fn": 83
+      }
+    }
+  },
+  "selected_yearly": {
+    "2024": {
+      "total": 366,
+      "correct": 188,
+      "accuracy": 0.5136612021857924,
+      "coverage": 1.0,
+      "brier": 0.28308300410214493,
+      "balanced_accuracy": 0.4796388970660386,
+      "observed_up_fraction": 0.6475409836065574,
+      "predicted_up_fraction": 0.6092896174863388,
+      "up_recall": 0.5949367088607594,
+      "down_recall": 0.3643410852713178,
+      "confusion": {
+        "tp": 141,
+        "tn": 47,
+        "fp": 82,
+        "fn": 96
+      }
+    },
+    "2025": {
+      "total": 365,
+      "correct": 171,
+      "accuracy": 0.4684931506849315,
+      "coverage": 1.0,
+      "brier": 0.288385217053087,
+      "balanced_accuracy": 0.4851316266151431,
+      "observed_up_fraction": 0.46301369863013697,
+      "predicted_up_fraction": 0.726027397260274,
+      "up_recall": 0.7100591715976331,
+      "down_recall": 0.2602040816326531,
+      "confusion": {
+        "tp": 120,
+        "tn": 51,
+        "fp": 145,
+        "fn": 49
+      }
+    },
+    "2026": {
+      "total": 227,
+      "correct": 114,
+      "accuracy": 0.5022026431718062,
+      "coverage": 1.0,
+      "brier": 0.2665650130572199,
+      "balanced_accuracy": 0.4826965236454745,
+      "observed_up_fraction": 0.5462555066079295,
+      "predicted_up_fraction": 0.7092511013215859,
+      "up_recall": 0.6935483870967742,
+      "down_recall": 0.27184466019417475,
+      "confusion": {
+        "tp": 86,
+        "tn": 28,
+        "fp": 75,
+        "fn": 38
+      }
+    }
+  },
+  "selected_confidence_intervals": [
+    {
+      "block_days": 30,
+      "accuracy_ci95": [
+        0.4102296450939457,
+        0.5751565762004175
+      ],
+      "accuracy_improvement_vs_prior_ci95": [
+        -0.1607776617954071,
+        0.037578288100208766
+      ]
+    },
+    {
+      "block_days": 60,
+      "accuracy_ci95": [
+        0.4028966597077244,
+        0.5752087682672233
+      ],
+      "accuracy_improvement_vs_prior_ci95": [
+        -0.14825156576200418,
+        0.021946764091858015
+      ]
+    },
+    {
+      "block_days": 90,
+      "accuracy_ci95": [
+        0.41437891440501046,
+        0.5793580375782881
+      ],
+      "accuracy_improvement_vs_prior_ci95": [
+        -0.15657620041753653,
+        0.025052192066805846
+      ]
+    }
+  ],
+  "selected_diagnostics": {
+    "high_confidence_subset": {
+      "confidence_threshold": 0.9,
+      "total": 0,
+      "coverage": 0.0,
+      "accuracy": null,
+      "counts_toward_primary_goal": false
+    },
+    "nonoverlapping_offsets_all_reported": [
+      {
+        "offset": 0,
+        "total": 32,
+        "accuracy": 0.4375
+      },
+      {
+        "offset": 1,
+        "total": 32,
+        "accuracy": 0.5
+      },
+      {
+        "offset": 2,
+        "total": 32,
+        "accuracy": 0.40625
+      },
+      {
+        "offset": 3,
+        "total": 32,
+        "accuracy": 0.53125
+      },
+      {
+        "offset": 4,
+        "total": 32,
+        "accuracy": 0.5625
+      },
+      {
+        "offset": 5,
+        "total": 32,
+        "accuracy": 0.59375
+      },
+      {
+        "offset": 6,
+        "total": 32,
+        "accuracy": 0.5625
+      },
+      {
+        "offset": 7,
+        "total": 32,
+        "accuracy": 0.53125
+      },
+      {
+        "offset": 8,
+        "total": 32,
+        "accuracy": 0.53125
+      },
+      {
+        "offset": 9,
+        "total": 32,
+        "accuracy": 0.46875
+      },
+      {
+        "offset": 10,
+        "total": 32,
+        "accuracy": 0.46875
+      },
+      {
+        "offset": 11,
+        "total": 32,
+        "accuracy": 0.375
+      },
+      {
+        "offset": 12,
+        "total": 32,
+        "accuracy": 0.40625
+      },
+      {
+        "offset": 13,
+        "total": 32,
+        "accuracy": 0.5
+      },
+      {
+        "offset": 14,
+        "total": 32,
+        "accuracy": 0.5625
+      },
+      {
+        "offset": 15,
+        "total": 32,
+        "accuracy": 0.5625
+      },
+      {
+        "offset": 16,
+        "total": 32,
+        "accuracy": 0.625
+      },
+      {
+        "offset": 17,
+        "total": 32,
+        "accuracy": 0.5625
+      },
+      {
+        "offset": 18,
+        "total": 32,
+        "accuracy": 0.59375
+      },
+      {
+        "offset": 19,
+        "total": 32,
+        "accuracy": 0.53125
+      },
+      {
+        "offset": 20,
+        "total": 32,
+        "accuracy": 0.59375
+      },
+      {
+        "offset": 21,
+        "total": 32,
+        "accuracy": 0.5625
+      },
+      {
+        "offset": 22,
+        "total": 32,
+        "accuracy": 0.5
+      },
+      {
+        "offset": 23,
+        "total": 32,
+        "accuracy": 0.4375
+      },
+      {
+        "offset": 24,
+        "total": 32,
+        "accuracy": 0.25
+      },
+      {
+        "offset": 25,
+        "total": 32,
+        "accuracy": 0.40625
+      },
+      {
+        "offset": 26,
+        "total": 32,
+        "accuracy": 0.40625
+      },
+      {
+        "offset": 27,
+        "total": 32,
+        "accuracy": 0.4375
+      },
+      {
+        "offset": 28,
+        "total": 31,
+        "accuracy": 0.45161290322580644
+      },
+      {
+        "offset": 29,
+        "total": 31,
+        "accuracy": 0.45161290322580644
+      }
+    ]
+  },
+  "primary_goal_achieved": false,
+  "every_reused_year_above_90pct": false,
+  "all_accuracy_ci_lower_bounds_above_90pct": false,
+  "checks": {
+    "features_prefix_invariance": true,
+    "future_changes_do_not_change_past_features": true,
+    "label_matches_future_entry_and_exit_prices": true,
+    "evaluation_labels_never_enter_predictions": true,
+    "test_subset_does_not_change_scaling_or_predictions": true,
+    "balanced_identical_features_give_half_probability": true,
+    "future_price_changes_do_not_change_past_model_predictions": true,
+    "all_reused_models_share_dates_and_full_coverage": true,
+    "original_v1_accuracy_reproduced": true,
+    "all_folds_labels_end_before_refit": true,
+    "v1_files_unchanged": true
+  },
+  "script_sha256": "acda8455015742de407b4b386998946ed86b973caf843cc5acad243e834ae056",
+  "environment": {
+    "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+    "numpy": "2.4.4",
+    "pandas": "3.0.2"
+  }
+}
