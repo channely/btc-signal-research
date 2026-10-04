@@ -246,6 +246,9 @@ dialog{max-height:calc(100dvh - 32px);overflow-y:auto;overscroll-behavior:contai
   .date-controls input{min-height:44px;font-size:16px}
 }
 
+.model-freshness{margin:16px 0;padding:14px 16px;border:1px solid #d8decf;border-radius:12px;background:#f4f5ed;font-size:13px;line-height:1.7;overflow-wrap:anywhere}
+.model-freshness p{margin:5px 0 0}
+
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }

@@ -112,9 +112,17 @@
 
   function renderResearch() {
     currentResearch = model.researchForecast(candles, selectedIndex, horizon, data.v3, { allowHistorical: !importedName });
+    const freshness = model.researchModelStatus(data.v3, horizon, todayUTC());
+    const freshnessLabels = { expired: '当前模型已过期', pending: '当前模型尚未生效', current: '当前参数在有效期内', unavailable: '当前模型有效期未知' };
+    text('research-freshness', freshnessLabels[freshness.status]);
+    text('research-validity', freshness.status === 'unavailable' ? freshness.reason
+      : `研究快照：${freshness.snapshotEnd || '未知'} · 参数适用于 ${freshness.validFrom} 至 ${freshness.validUntilExclusive} 之前的信号日期。`);
+    text('research-update-note', freshness.status === 'expired'
+      ? '当前预测需等待模型更新；仍可查看有效日期内的冻结结果和历史记录。刷新行情或导入 CSV 不会更新模型。'
+      : '行情时间与模型有效期独立；刷新行情或导入 CSV 不会重新训练模型。');
     const f = currentResearch;
     text('research-probability', f.available ? percent(f.probability) : '暂不可用');
-    text('research-status', f.available ? '观望 · 优势未证实' : '没有适用模型');
+    text('research-status', f.available ? (f.mode === 'historical' ? '历史记录 · 观望' : '冻结结果 · 观望') : '没有适用模型');
     text('research-selected', f.available ? '历史先验 · 未证明额外优势' : '等待模型更新');
     text('research-dates', f.available ? f.date + ' → ' + f.endDate : '—');
     text('research-forecast', f.available
@@ -366,6 +374,7 @@
         annualVolatility30: f.volatility, score: f.score, unexecutedTargetWeight: f.weight },
       forecast: { horizonDays: horizon, upProbability: f.probability, entryDate: f.entryDate, endDate: f.endDate },
       closeToCloseResearch: currentResearch,
+      researchModelStatus: model.researchModelStatus(data.v3, horizon, todayUTC()),
       retrospectiveOutcome: { forwardReturn: f.realized, usedForSignal: false },
       originalHistoricalEvaluation: { accuracy: stats.direction_accuracy, total: stats.n_evaluation_overlapping,
         correct: Math.round(stats.direction_accuracy * stats.n_evaluation_overlapping), coverage: 1,
@@ -487,6 +496,8 @@
   observer.observe($('price-chart')); observer.observe($('performance-chart'));
   window.addEventListener('hashchange', navigate);
   document.addEventListener('visibilitychange', () => { if (!document.hidden && view === 'overview') renderOverview(); });
+  // Keep the model warning current across UTC midnight even without a market refresh.
+  setInterval(() => { if (!document.hidden && view === 'overview') renderResearch(); }, 60_000);
   configureDate(); renderMarket(); renderOverview(); renderData(); navigate();
   refreshMarket();
 })();

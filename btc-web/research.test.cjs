@@ -48,6 +48,31 @@ test('expired model and earlier CSV dates never use current parameters', () => {
   }
 });
 
+test('model freshness follows UTC today independently of the selected historical signal', () => {
+  for (const horizon of [7, 30]) {
+    assert.equal(model.researchModelStatus(data.v3, horizon, '2026-08-31').status, 'pending');
+    assert.equal(model.researchModelStatus(data.v3, horizon, '2026-09-01').status, 'current');
+    assert.equal(model.researchModelStatus(data.v3, horizon, '2026-09-30').status, 'current');
+    const status = model.researchModelStatus(data.v3, horizon, '2026-10-01');
+    assert.equal(status.status, 'expired');
+    assert.equal(status.validUntilExclusive, '2026-10-01');
+    const historical = model.researchForecast(data.candles, data.candles.length - 1, horizon, data.v3, { allowHistorical: true });
+    assert.equal(historical.available, true);
+    assert.equal(historical.mode, 'historical');
+  }
+});
+
+test('missing or malformed validity fails closed for current inference', () => {
+  const rows = [['2026-09-17', 100, 100, 100, 100, 0]];
+  assert.equal(model.researchModelStatus(null, 7, '2026-09-17').status, 'unavailable');
+  for (const validity of [undefined, 'bad-date', '2026-02-30', '2026-08-31']) {
+    const artifact = JSON.parse(JSON.stringify(data.v3));
+    artifact.horizons['7'].validUntilExclusive = validity;
+    assert.equal(model.researchModelStatus(artifact, 7, '2026-09-17').status, 'unavailable');
+    assert.equal(model.researchForecast(rows, 0, 7, artifact).available, false);
+  }
+});
+
 test('custom CSV does not silently inherit same-date historical predictions', () => {
   const index = data.candles.findIndex(row => row[0] === '2025-01-01');
   assert.equal(model.researchForecast(data.candles, index, 7, data.v3).available, false);

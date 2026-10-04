@@ -103,6 +103,22 @@
       q10: calibrated.return_q10, median: calibrated.return_median, q90: calibrated.return_q90 };
   }
 
+  function researchModelStatus(artifact, horizon, today = new Date().toISOString().slice(0, 10)) {
+    const snapshot = artifact?.horizons?.[String(horizon)];
+    const validDate = value => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value)
+      && Number.isFinite(Date.parse(value + 'T00:00:00Z'))
+      && new Date(value + 'T00:00:00Z').toISOString().slice(0, 10) === value;
+    const validFrom = snapshot?.refitDate;
+    const validUntilExclusive = snapshot?.validUntilExclusive;
+    if (!validDate(today) || !validDate(validFrom) || !validDate(validUntilExclusive) || validFrom >= validUntilExclusive) {
+      return { status: 'unavailable', today, reason: '模型有效期缺失或无效，无法用于当前预测。' };
+    }
+    return {
+      status: today >= validUntilExclusive ? 'expired' : today < validFrom ? 'pending' : 'current',
+      today, validFrom, validUntilExclusive, snapshotEnd: artifact.snapshotEnd || artifact.asOfDate || null,
+    };
+  }
+
   function researchForecast(candles, index, horizon, artifact, options = {}) {
     if (![7, 30].includes(horizon)) throw new Error('仅支持 7 天或 30 天预测期限。');
     const date = candles[index]?.[0];
@@ -113,7 +129,7 @@
     if (historical) {
       probability = historical[1]; selected = historical[7]; mode = 'historical';
     } else {
-      if (date < snapshot.refitDate || date >= snapshot.validUntilExclusive) {
+      if (researchModelStatus(artifact, horizon, date).status !== 'current') {
         return { available: false, reason: '此日期没有适用的冻结模型；需要先完成新的时序验证与模型更新。' };
       }
       // The precommitted selection procedure chose the historical prior for
@@ -133,7 +149,7 @@
       trainLabelEndMax: mode === 'frozen' ? snapshot.trainLabelEndMax : null };
   }
 
-  const api = { addDays, parseCSV, indicators, forecast, researchForecast };
+  const api = { addDays, parseCSV, indicators, forecast, researchForecast, researchModelStatus };
   root.BTCModel = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 })(globalThis);
