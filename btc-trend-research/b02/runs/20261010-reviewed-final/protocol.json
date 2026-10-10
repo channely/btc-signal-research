@@ -1,0 +1,8 @@
+{
+  "name": "B02 append-only V3 refresh",
+  "v3_protocol_sha256": "500067b8a11c7a880685c31aeabe38b12da7a3c7273af56b4505c96797c48c50",
+  "refresh_script_sha256": "5baf7b51cf761f09cf5f037259c84b19df61ede81e9c4583cd4f0c2e2fa31d2a",
+  "candidate_selection": "Unchanged V3 four candidates, monthly purged refits, annual past-only selection",
+  "new_signal_start_exclusive": "2026-09-16",
+  "activation": "No automatic publication or expiry update; requires reviewed audit, original evidence gate, forward evidence and explicit release approval."
+}

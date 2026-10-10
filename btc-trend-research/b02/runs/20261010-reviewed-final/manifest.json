@@ -1,0 +1,23 @@
+{
+  "source": "https://data-api.binance.vision/api/v3/klines",
+  "symbol": "BTCUSDT",
+  "interval": "1d",
+  "timezone": "UTC",
+  "retrieved_at_utc": "2026-10-10T03:47:08.569556+00:00",
+  "server_time_ms": 1791604025110,
+  "cutoff_exclusive": "2026-10-10",
+  "requests": [
+    {
+      "url": "https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=1d&startTime=1789516800000&endTime=1791590399999&limit=1000",
+      "raw_file": "raw/klines-000.json",
+      "sha256": "343bad762ee1ba9505bfbf868625583b0e54c0a3c5c8eb22d7ebea87b7f704dd"
+    }
+  ],
+  "server_time_raw_sha256": "772e11f19e8368afcf6c5d1dc5688beba127e3964b4ed11f371fb5b5cd8eb291",
+  "rows": 3341,
+  "first_closed_candle": "2017-08-17",
+  "last_closed_candle": "2026-10-09",
+  "frozen_prefix_sha256": "2bbd3ded2c21d1261e59e82257f24adc9a4a8b877a63346015a946e8b5e45f8e",
+  "sha256": "3a28ac68c28099e07335c89ae97aaa023b4b3cd8bd14e061b7dcb195c33d2636",
+  "overlap_candles_verified": 1
+}

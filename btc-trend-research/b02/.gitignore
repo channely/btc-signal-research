@@ -1,0 +1,3 @@
+# Keep the reviewed evidence; intermediate/repeated runs are local only.
+runs/*
+!runs/20261010-reviewed-final/
